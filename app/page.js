@@ -69,6 +69,19 @@ function FlightSearch() {
       <label className="field"><span>Пассажиры</span><select defaultValue="1"><option value="1">1 пассажир</option><option value="2">2 пассажира</option><option value="3">3 пассажира</option><option value="4">4 пассажира</option></select></label>
       <button className="primary" type="submit">Найти билеты</button>
     </form>
+    <div style={{ marginTop: '16px' }}>
+  <h3>Проблемы с рейсом?</h3>
+  <p>Рейс задержали или отменили? Проверьте, положена ли вам компенсация.</p>
+
+  <a
+    className="primary"
+    href="https://airhelp.tp.st/LJXTSL99"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Проверить компенсацию
+  </a>
+</div>
   </div>;
 }
 
