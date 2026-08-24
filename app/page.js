@@ -97,12 +97,144 @@ function Deals() {
 }
 
 function Weather() {
-  return <div>
-    <div className="section-heading"><div><span className="eyebrow">Перед поездкой</span><h2>Проверьте погоду</h2><p>В первой версии подготовим интерфейс, затем подключим погодный API.</p></div><div className="big-icon">🌤️</div></div>
-    <form className="weather-form" onSubmit={e => e.preventDefault()}><Field label="Город" placeholder="Например, Athens" /><button className="primary" type="submit">Показать погоду</button></form>
-  </div>;
-}
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
+  async function handleWeatherSubmit(e) {
+    e.preventDefault();
+
+    if (!city.trim()) {
+      setError('Введите город');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+    setWeather(null);
+
+    try {
+      const response = await fetch(
+        `/api/weather?city=${encodeURIComponent(city.trim())}`
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Не удалось получить погоду');
+      }
+
+      setWeather(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <div>
+      <div className="section-heading">
+        <div>
+          <span className="eyebrow">Перед поездкой</span>
+          <h2>Проверьте погоду</h2>
+          <p>
+            Узнайте текущую погоду и прогноз на ближайшие 3 дня.
+          </p>
+        </div>
+        <div className="big-icon">🌤️</div>
+      </div>
+
+      <form className="weather-form" onSubmit={handleWeatherSubmit}>
+        <label className="field">
+          <span>Город</span>
+          <input
+            type="text"
+            placeholder="Например, Athens"
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+        </label>
+
+        <button className="primary" type="submit" disabled={loading}>
+          {loading ? 'Загрузка...' : 'Показать погоду'}
+        </button>
+      </form>
+
+      {error && (
+        <div className="weather-error">
+          {error}
+        </div>
+      )}
+
+      {weather && (
+        <div className="weather-result">
+          <div className="weather-current">
+            <div>
+              <span className="eyebrow">Сейчас</span>
+              <h3>
+                {weather.location.name}, {weather.location.country}
+              </h3>
+
+              <div className="weather-temp">
+                {Math.round(weather.current.temp_c)}°C
+              </div>
+
+              <p>{weather.current.condition}</p>
+
+              <div className="weather-details">
+                <span>
+                  Ощущается: {Math.round(weather.current.feelslike_c)}°C
+                </span>
+                <span>
+                  Влажность: {weather.current.humidity}%
+                </span>
+                <span>
+                  Ветер: {weather.current.wind_kph} км/ч
+                </span>
+              </div>
+            </div>
+
+            <img
+              src={`https:${weather.current.icon}`}
+              alt={weather.current.condition}
+              className="weather-icon"
+            />
+          </div>
+
+          <div className="weather-forecast">
+            {weather.forecast.map((day) => (
+              <div className="forecast-card" key={day.date}>
+                <strong>{day.date}</strong>
+
+                <img
+                  src={`https:${day.icon}`}
+                  alt={day.condition}
+                />
+
+                <span>{day.condition}</span>
+
+                <b>
+                  {Math.round(day.max_temp_c)}° /
+                  {Math.round(day.min_temp_c)}°
+                </b>
+
+                <small>
+                  Дождь: {day.chance_of_rain}%
+                </small>
+              </div>
+            ))}
+          </div>
+
+          <div className="weather-source">
+            Weather data by WeatherAPI.com
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 function Products() {
   return <div>
     <div className="section-heading"><div><span className="eyebrow">Ваши сервисы</span><h2>Мои продукты</h2><p>Здесь разместим красивые карточки со ссылками на ваши действующие проекты.</p></div><div className="big-icon">🔗</div></div>
