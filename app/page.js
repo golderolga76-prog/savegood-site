@@ -51,6 +51,16 @@ export default function Home() {
         <strong>SaveGood допомогає знайти пропозиції.</strong>
         <span> Бронювання, купівля та оплата здійснюється на сайтах відповідних партнерів.</span>
       </section>
+        <section style={{ marginTop: '24px' }}>
+  <div className="section-heading">
+    <div>
+      <span className="eyebrow">Наші сервіси</span>
+      <h2>Корисні онлайн-сервіси</h2>
+    </div>
+  </div>
+
+  <Products />
+</section>
 
       <footer className="footer">© 2026 SaveGood.store</footer>
     </main>
