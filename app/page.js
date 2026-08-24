@@ -150,6 +150,19 @@ function Tours() {
     Найти автомобиль
   </a>
 </div>
+      <div style={{ marginTop: '16px' }}>
+  <h3>Трансфер из аэропорта</h3>
+  <p>Закажите удобный трансфер через Kiwitaxi.</p>
+
+  <a
+    className="primary"
+    href="https://kiwitaxi.tp.st/RV7ba6y2"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Заказать трансфер
+  </a>
+</div>
     </div>
   );
 }
