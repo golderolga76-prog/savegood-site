@@ -1,8 +1,9 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'SaveGood — Find. Compare. Save.',
-  description: 'Search flights, hotels, deals, weather and useful products in one place.'
+  title: 'SaveGood — Travel & Useful Services for Ukrainians in Europe',
+  description:
+    'Flights, hotels, travel services, official EU information and useful resources for Ukrainians in Europe.',
 };
 
 export default function RootLayout({ children }) {
