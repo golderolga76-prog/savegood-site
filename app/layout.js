@@ -22,6 +22,7 @@ export default function RootLayout({ children }) {
             `,
           }}
         />
+       <meta name="mitgo-verification" content="1de1ac96-38ec-46eb-9cd2-c9cf7e84ae34" />
       </head>
       <body>{children}</body>
     </html>
