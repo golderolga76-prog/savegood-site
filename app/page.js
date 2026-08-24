@@ -374,31 +374,72 @@ function UkraineEurope() {
       <div className="section-heading">
         <div>
           <span className="eyebrow">🇺🇦 Українцям у Європі</span>
-          <h2>Корисна інформація для українців</h2>
+          <h2>Офіційна інформація та допомога</h2>
           <p>
-            Тимчасовий захист, документи, робота, виплати, медицина
-            та важливі зміни в країнах Європи.
+            Тимчасовий захист, права, документи та контакти державних органів у країнах ЄС.
           </p>
         </div>
       </div>
 
       <div className="cards">
         <article className="card">
-          <div className="card-icon">🪪</div>
-          <h3>Документи і захист</h3>
-          <p>Правила тимчасового захисту, посвідки та важливі документи.</p>
+          <div className="card-icon">🇪🇺</div>
+          <h3>Офіційна інформація ЄС</h3>
+          <p>
+            Практична інформація Європейської комісії для людей з України.
+          </p>
+          <a
+            href="https://commission.europa.eu/topics/eu-solidarity-ukraine/eu-assistance-ukraine/information-people-fleeing-war-ukraine_uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Відкрити офіційний сайт
+          </a>
         </article>
 
         <article className="card">
-          <div className="card-icon">💼</div>
-          <h3>Робота і допомога</h3>
-          <p>Корисна інформація про роботу, виплати та соціальну підтримку.</p>
+          <div className="card-icon">🌍</div>
+          <h3>Оберіть країну ЄС</h3>
+          <p>
+            Контакти національних органів, інформація про захист, роботу та медичну допомогу.
+          </p>
+          <a
+            href="https://commission.europa.eu/topics/eu-solidarity-ukraine/eu-assistance-ukraine/information-people-fleeing-war-ukraine/contacts-and-information-eu-country_uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Обрати країну
+          </a>
         </article>
 
         <article className="card">
-          <div className="card-icon">🏥</div>
-          <h3>Медицина і побут</h3>
-          <p>Медична допомога, страхування та повсякденні сервіси.</p>
+          <div className="card-icon">🛡️</div>
+          <h3>Тимчасовий захист</h3>
+          <p>
+            Офіційне рішення ЄС: тимчасовий захист продовжено до 4 березня 2028 року.
+          </p>
+          <a
+            href="https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=celex:32026D1912"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Переглянути рішення ЄС
+          </a>
+        </article>
+
+        <article className="card">
+          <div className="card-icon">📋</div>
+          <h3>Ваші права в ЄС</h3>
+          <p>
+            Проживання, робота, медицина, освіта, житло та інші права.
+          </p>
+          <a
+            href="https://commission.europa.eu/topics/eu-solidarity-ukraine/eu-assistance-ukraine/information-people-fleeing-war-ukraine/fleeing-ukraine-your-rights-eu_uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Переглянути права
+          </a>
         </article>
       </div>
     </div>
