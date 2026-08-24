@@ -137,6 +137,19 @@ function Tours() {
     Купить eSIM
   </a>
 </div>
+      <div style={{ marginTop: '16px' }}>
+  <h3>Аренда автомобиля</h3>
+  <p>Найдите автомобиль для поездки через GetRentacar.</p>
+
+  <a
+    className="primary"
+    href="https://getrentacar.tp.st/gLdfKqfp"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Найти автомобиль
+  </a>
+</div>
     </div>
   );
 }
