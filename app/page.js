@@ -69,7 +69,7 @@ function FlightSearch() {
       <label className="field"><span>Пассажиры</span><select defaultValue="1"><option value="1">1 пассажир</option><option value="2">2 пассажира</option><option value="3">3 пассажира</option><option value="4">4 пассажира</option></select></label>
      <a
   className="primary"
-  href="СЮДА_ВАША_ССЫЛКА_НА_АВИАБИЛЕТЫ"
+  href="https://aviasales.tp.st/NmyfLV1M"
   target="_blank"
   rel="noopener noreferrer"
 >
