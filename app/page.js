@@ -113,7 +113,14 @@ function HotelSearch() {
       <Field label="Заїзд" type="date" />
       <Field label="Виїзд" type="date" />
       <label className="field"><span>Гості</span><select defaultValue="2"><option value="1">1 гость</option><option value="2">2 гостя</option><option value="3">3 гостя</option><option value="4">4 гостя</option></select></label>
-      <button className="primary wide" type="submit">Знайти готелі</button>
+      <a
+  className="primary wide"
+  href="https://www.trip.com/hotels?Allianceid=10267076&SID=329339305&trip_sub1=&trip_sub3=D19467457"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Знайти готель
+</a>
     </form>
   </div>;
 }
