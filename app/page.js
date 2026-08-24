@@ -23,10 +23,13 @@ export default function Home() {
   <h1 className="brand">SaveGood</h1>
   <p className="tagline">Корисне для українців у Європі</p>
 </div>
+    </div>
+
 
 <p className="intro">
   Подорожі, важливі новини, документи та корисні сервіси в одному місці.
 </p>
+    </header>
       <nav className="tabs" aria-label="Основные разделы">
         {tabs.map(([id, icon, label]) => (
           <button key={id} onClick={() => setTab(id)} className={tab === id ? 'tab active' : 'tab'}>
