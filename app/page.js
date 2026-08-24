@@ -104,6 +104,19 @@ function Tours() {
       >
         Найти билеты и экскурсии
       </a>
+          <div style={{ marginTop: '16px' }}>
+  <h3>eSIM для путешествий</h3>
+  <p>Подключайте мобильный интернет за границей через Airalo.</p>
+
+  <a
+    className="primary"
+    href="https://airalo.tp.st/9oPK1p4k"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Купить eSIM
+  </a>
+</div>
     </div>
   );
 }
