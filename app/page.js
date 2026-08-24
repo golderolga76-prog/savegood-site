@@ -452,21 +452,80 @@ function News() {
       <div className="section-heading">
         <div>
           <span className="eyebrow">📰 Новини та оновлення</span>
-          <h2>Важливі зміни для українців у Європі</h2>
+          <h2>Офіційні джерела новин</h2>
           <p>
-            Тут будуть актуальні новини про правила перебування,
-            документи, допомогу та інші важливі зміни.
+            Актуальна інформація про Україну, ЄС, тимчасовий захист,
+            права та важливі рішення.
           </p>
         </div>
       </div>
 
       <div className="cards">
         <article className="card">
-          <div className="card-icon">📌</div>
-          <h3>Останні оновлення</h3>
-          <p>Нові матеріали будуть додаватися з датою та посиланням на джерело.</p>
+          <div className="card-icon">🇪🇺</div>
+          <h3>Європейська комісія</h3>
+          <p>
+            Офіційні новини ЄС про підтримку України та важливі рішення.
+          </p>
+          <a
+            href="https://commission.europa.eu/topics/eu-solidarity-ukraine_uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Читати новини ЄС
+          </a>
+        </article>
+
+        <article className="card">
+          <div className="card-icon">🏛️</div>
+          <h3>Рада Європейського Союзу</h3>
+          <p>
+            Офіційні заяви та рішення Ради ЄС щодо України.
+          </p>
+          <a
+            href="https://www.consilium.europa.eu/en/press/press-releases/?page=1&topic=122265"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Відкрити Consilium
+          </a>
+        </article>
+
+        <article className="card">
+          <div className="card-icon">📅</div>
+          <h3>Хронологія ЄС — Україна</h3>
+          <p>
+            Офіційна хронологія рішень, допомоги та подій ЄС щодо України.
+          </p>
+          <a
+            href="https://commission.europa.eu/topics/eu-solidarity-ukraine/timeline_uk"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Переглянути хронологію
+          </a>
+        </article>
+
+        <article className="card">
+          <div className="card-icon">🇺🇦</div>
+          <h3>Уряд України</h3>
+          <p>
+            Офіційні новини Кабінету Міністрів України.
+          </p>
+          <a
+            href="https://www.kmu.gov.ua/news"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Читати урядові новини
+          </a>
         </article>
       </div>
+
+      <p style={{ marginTop: '18px', fontSize: '14px' }}>
+        SaveGood не є офіційним сайтом ЄС або органів влади України.
+        Посилання ведуть безпосередньо на офіційні ресурси.
+      </p>
     </div>
   );
 }
