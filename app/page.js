@@ -67,7 +67,14 @@ function FlightSearch() {
       <Field label="Дата вылета" type="date" />
       <Field label="Дата возвращения" type="date" />
       <label className="field"><span>Пассажиры</span><select defaultValue="1"><option value="1">1 пассажир</option><option value="2">2 пассажира</option><option value="3">3 пассажира</option><option value="4">4 пассажира</option></select></label>
-      <button className="primary" type="submit">Найти билеты</button>
+     <a
+  className="primary"
+  href="СЮДА_ВАША_ССЫЛКА_НА_АВИАБИЛЕТЫ"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Найти билеты
+</a>
     </form>
     <div style={{ marginTop: '16px' }}>
   <h3>Проблемы с рейсом?</h3>
