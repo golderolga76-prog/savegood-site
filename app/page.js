@@ -3,14 +3,13 @@
 import { useState } from 'react';
 
 const tabs = [
-  ['flights', '✈️', 'Авиабилеты'],
-  ['hotels', '🏨', 'Отели'],
-  ['deals', '🏷️', 'Скидки'],
-  ['tours', '🎟️', 'Экскурсии'], 
+  ['flights', '✈️', 'Авіаквитки'],
+  ['hotels', '🏨', 'Готелі'],
+  ['tours', '🧳', 'Подорожі'],
+  ['ukraine', '🇺🇦', 'Українцям у Європі'],
+  ['news', '📰', 'Новини'],
   ['weather', '🌤️', 'Погода'],
-  ['products', '🔗', 'Мои продукты']
 ];
-
 export default function Home() {
   const [tab, setTab] = useState('flights');
 
@@ -19,14 +18,15 @@ export default function Home() {
       <header className="hero">
         <div className="brand-wrap">
           <div className="brand-mark">S</div>
-          <div>
-            <h1 className="brand">SaveGood</h1>
-            <p className="tagline">Find • Compare • Save</p>
-          </div>
-        </div>
-        <p className="intro">Всё полезное для поездок, выгодных покупок и ваших любимых сервисов — в одном месте.</p>
-      </header>
+          <div className="brand-mark">🇺🇦🇪🇺</div>
+<div>
+  <h1 className="brand">SaveGood</h1>
+  <p className="tagline">Корисне для українців у Європі</p>
+</div>
 
+<p className="intro">
+  Подорожі, важливі новини, документи та корисні сервіси в одному місці.
+</p>
       <nav className="tabs" aria-label="Основные разделы">
         {tabs.map(([id, icon, label]) => (
           <button key={id} onClick={() => setTab(id)} className={tab === id ? 'tab active' : 'tab'}>
@@ -36,13 +36,13 @@ export default function Home() {
       </nav>
 
       <section className="panel">
-        {tab === 'flights' && <FlightSearch />}
-        {tab === 'hotels' && <HotelSearch />}
-        {tab === 'deals' && <Deals />}
-        {tab === 'tours' && <Tours />}
-        {tab === 'weather' && <Weather />}
-        {tab === 'products' && <Products />}
-      </section>
+       {tab === 'flights' && <FlightSearch />}
+       {tab === 'hotels' && <HotelSearch />}
+       {tab === 'tours' && <Tours />}
+       {tab === 'ukraine' && <UkraineEurope />}
+       {tab === 'news' && <News />}
+       {tab === 'weather' && <Weather />}
+          </section>
 
       <section className="notice">
         <strong>SaveGood помогает найти предложения.</strong>
@@ -335,4 +335,65 @@ function Products() {
 </article>
     </div>
   </div>;
+}
+function UkraineEurope() {
+  return (
+    <div>
+      <div className="section-heading">
+        <div>
+          <span className="eyebrow">🇺🇦 Українцям у Європі</span>
+          <h2>Корисна інформація для українців</h2>
+          <p>
+            Тимчасовий захист, документи, робота, виплати, медицина
+            та важливі зміни в країнах Європи.
+          </p>
+        </div>
+      </div>
+
+      <div className="cards">
+        <article className="card">
+          <div className="card-icon">🪪</div>
+          <h3>Документи і захист</h3>
+          <p>Правила тимчасового захисту, посвідки та важливі документи.</p>
+        </article>
+
+        <article className="card">
+          <div className="card-icon">💼</div>
+          <h3>Робота і допомога</h3>
+          <p>Корисна інформація про роботу, виплати та соціальну підтримку.</p>
+        </article>
+
+        <article className="card">
+          <div className="card-icon">🏥</div>
+          <h3>Медицина і побут</h3>
+          <p>Медична допомога, страхування та повсякденні сервіси.</p>
+        </article>
+      </div>
+    </div>
+  );
+}
+
+function News() {
+  return (
+    <div>
+      <div className="section-heading">
+        <div>
+          <span className="eyebrow">📰 Новини та оновлення</span>
+          <h2>Важливі зміни для українців у Європі</h2>
+          <p>
+            Тут будуть актуальні новини про правила перебування,
+            документи, допомогу та інші важливі зміни.
+          </p>
+        </div>
+      </div>
+
+      <div className="cards">
+        <article className="card">
+          <div className="card-icon">📌</div>
+          <h3>Останні оновлення</h3>
+          <p>Нові матеріали будуть додаватися з датою та посиланням на джерело.</p>
+        </article>
+      </div>
+    </div>
+  );
 }
