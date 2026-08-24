@@ -6,6 +6,7 @@ const tabs = [
   ['flights', '✈️', 'Авиабилеты'],
   ['hotels', '🏨', 'Отели'],
   ['deals', '🏷️', 'Скидки'],
+  ['tours', '🎟️', 'Экскурсии'], 
   ['weather', '🌤️', 'Погода'],
   ['products', '🔗', 'Мои продукты']
 ];
@@ -38,6 +39,7 @@ export default function Home() {
         {tab === 'flights' && <FlightSearch />}
         {tab === 'hotels' && <HotelSearch />}
         {tab === 'deals' && <Deals />}
+        {tab === 'tours' && <Tours />}
         {tab === 'weather' && <Weather />}
         {tab === 'products' && <Products />}
       </section>
@@ -81,6 +83,29 @@ function HotelSearch() {
       <button className="primary wide" type="submit">Найти отели</button>
     </form>
   </div>;
+}
+
+function Tours() {
+  return (
+    <div>
+      <div className="section-heading">
+        <div>
+          <span className="eyebrow">Экскурсии и билеты</span>
+          <h2>Билеты в музеи и достопримечательности</h2>
+          <p>Найдите интересные места, экскурсии и развлечения через Tiqets.</p>
+        </div>
+      </div>
+
+      <a
+        className="primary"
+        href="https://tiqets.tp.st/ytO42Sgg"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Найти билеты и экскурсии
+      </a>
+    </div>
+  );
 }
 
 function Deals() {
