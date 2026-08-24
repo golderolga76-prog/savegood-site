@@ -48,8 +48,8 @@ export default function Home() {
           </section>
 
       <section className="notice">
-        <strong>SaveGood помогает найти предложения.</strong>
-        <span> Бронирование, покупка и оплата выполняются на сайтах соответствующих партнёров.</span>
+        <strong>SaveGood допомогає знайти пропозиції.</strong>
+        <span> Бронювання, купівля та оплата здійснюється на сайтах відповідних партнерів.</span>
       </section>
 
       <footer className="footer">© 2026 SaveGood.store</footer>
@@ -63,25 +63,25 @@ function Field({ label, type='text', placeholder }) {
 
 function FlightSearch() {
   return <div>
-    <div className="section-heading"><div><span className="eyebrow">Путешествия</span><h2>Найдите авиабилеты</h2><p>Введите направление и даты. После подключения партнёров поиск будет вести к актуальным предложениям.</p></div><div className="big-icon">✈️</div></div>
+    <div className="section-heading"><div><span className="eyebrow">Подорожі</span><h2>Знайдіть авіаквитки</h2><p>Введіть напрямок та дату. Пфсля підключення партнерів пошук буде вести до актуальних пропозицій.</p></div><div className="big-icon">✈️</div></div>
     <form className="search-grid" onSubmit={e => e.preventDefault()}>
-      <Field label="Откуда" placeholder="Например, Athens" />
-      <Field label="Куда" placeholder="Например, Rome" />
-      <Field label="Дата вылета" type="date" />
-      <Field label="Дата возвращения" type="date" />
-      <label className="field"><span>Пассажиры</span><select defaultValue="1"><option value="1">1 пассажир</option><option value="2">2 пассажира</option><option value="3">3 пассажира</option><option value="4">4 пассажира</option></select></label>
+      <Field label="Звідки" placeholder="Наприклад, Салоніки" />
+      <Field label="Куди" placeholder="Наприклад, Афіни" />
+      <Field label="Дата виліту" type="date" />
+      <Field label="Дата повернення" type="date" />
+      <label className="field"><span>Пасажира</span><select defaultValue="1"><option value="1">1 пасажир</option><option value="2">2 пасажира</option><option value="3">3 пасажира</option><option value="4">4 пасажира</option></select></label>
      <a
   className="primary"
   href="https://aviasales.tp.st/NmyfLV1M"
   target="_blank"
   rel="noopener noreferrer"
 >
-  Найти билеты
-</a>
+   Знайти квитки
+    </a>
     </form>
     <div style={{ marginTop: '16px' }}>
-  <h3>Проблемы с рейсом?</h3>
-  <p>Рейс задержали или отменили? Проверьте, положена ли вам компенсация.</p>
+  <h3>Проблема с рейсом?</h3>
+  <p>Рейс затримали або відмінили.</p>
 
   <a
     className="primary"
@@ -89,7 +89,7 @@ function FlightSearch() {
     target="_blank"
     rel="noopener noreferrer"
   >
-    Проверить компенсацию
+    Перевірити компенсацію
   </a>
 </div>
   </div>;
@@ -97,13 +97,13 @@ function FlightSearch() {
 
 function HotelSearch() {
   return <div>
-    <div className="section-heading"><div><span className="eyebrow">Проживание</span><h2>Найдите отель</h2><p>Выберите город, даты проживания и количество гостей.</p></div><div className="big-icon">🏨</div></div>
+    <div className="section-heading"><div><span className="eyebrow">Проживання</span><h2>Знайти готель</h2><p>Обрати місто, дату проживання та кількість гостей.</p></div><div className="big-icon">🏨</div></div>
     <form className="search-grid" onSubmit={e => e.preventDefault()}>
-      <Field label="Город или направление" placeholder="Например, Thessaloniki" />
-      <Field label="Заезд" type="date" />
-      <Field label="Выезд" type="date" />
-      <label className="field"><span>Гости</span><select defaultValue="2"><option value="1">1 гость</option><option value="2">2 гостя</option><option value="3">3 гостя</option><option value="4">4 гостя</option></select></label>
-      <button className="primary wide" type="submit">Найти отели</button>
+      <Field label="Місто та напрямок" placeholder="Наприклад, Thessaloniki" />
+      <Field label="Заїзд" type="date" />
+      <Field label="Виїзд" type="date" />
+      <label className="field"><span>Гості</span><select defaultValue="2"><option value="1">1 гость</option><option value="2">2 гостя</option><option value="3">3 гостя</option><option value="4">4 гостя</option></select></label>
+      <button className="primary wide" type="submit">Знайти готелі</button>
     </form>
   </div>;
 }
@@ -113,9 +113,9 @@ function Tours() {
     <div>
       <div className="section-heading">
         <div>
-          <span className="eyebrow">Экскурсии и билеты</span>
-          <h2>Билеты в музеи и достопримечательности</h2>
-          <p>Найдите интересные места, экскурсии и развлечения через Tiqets.</p>
+          <span className="eyebrow">Экскурсії та квитки</span>
+          <h2>Квитки до музеїв та визначних місць</h2>
+          <p>Знайдіть цікаві місця, екскурсії та розваги через Tiqets.</p>
         </div>
       </div>
 
@@ -125,11 +125,11 @@ function Tours() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Найти билеты и экскурсии
+        Знайти квитки та екскурсії
       </a>
           <div style={{ marginTop: '16px' }}>
-  <h3>eSIM для путешествий</h3>
-  <p>Подключайте мобильный интернет за границей через Airalo.</p>
+  <h3>eSIM для подорожей</h3>
+  <p>Підключайте мобільний інтернет за кордоном через Airalo.</p>
 
   <a
     className="primary"
@@ -137,12 +137,12 @@ function Tours() {
     target="_blank"
     rel="noopener noreferrer"
   >
-    Купить eSIM
+    Купити eSIM
   </a>
 </div>
       <div style={{ marginTop: '16px' }}>
-  <h3>Аренда автомобиля</h3>
-  <p>Найдите автомобиль для поездки через GetRentacar.</p>
+  <h3>оренда авто</h3>
+  <p>Знайти авто для подорожі через GetRentacar.</p>
 
   <a
     className="primary"
@@ -150,12 +150,12 @@ function Tours() {
     target="_blank"
     rel="noopener noreferrer"
   >
-    Найти автомобиль
+    Знайти авто
   </a>
 </div>
       <div style={{ marginTop: '16px' }}>
-  <h3>Трансфер из аэропорта</h3>
-  <p>Закажите удобный трансфер через Kiwitaxi.</p>
+  <h3>Трансфер з аеропорту</h3>
+  <p>Замов зручний трансфер через Kiwitaxi.</p>
 
   <a
     className="primary"
@@ -163,7 +163,7 @@ function Tours() {
     target="_blank"
     rel="noopener noreferrer"
   >
-    Заказать трансфер
+    Замовити трансфер
   </a>
 </div>
     </div>
@@ -193,7 +193,7 @@ function Weather() {
     e.preventDefault();
 
     if (!city.trim()) {
-      setError('Введите город');
+      setError('Введіть місто');
       return;
     }
 
@@ -209,7 +209,7 @@ function Weather() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Не удалось получить погоду');
+        throw new Error(data.error || 'Не вдалося отримати погоду');
       }
 
       setWeather(data);
@@ -224,10 +224,10 @@ function Weather() {
     <div>
       <div className="section-heading">
         <div>
-          <span className="eyebrow">Перед поездкой</span>
-          <h2>Проверьте погоду</h2>
+          <span className="eyebrow">Перед поїздкою</span>
+          <h2>Перевірте погоду</h2>
           <p>
-            Узнайте текущую погоду и прогноз на ближайшие 3 дня.
+            Дізнайтеся поточну погоду та прогноз на найближчі 3 дні.
           </p>
         </div>
         <div className="big-icon">🌤️</div>
@@ -238,14 +238,14 @@ function Weather() {
           <span>Город</span>
           <input
             type="text"
-            placeholder="Например, Athens"
+            placeholder="Наприклад, Athens"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
         </label>
 
         <button className="primary" type="submit" disabled={loading}>
-          {loading ? 'Загрузка...' : 'Показать погоду'}
+          {loading ? 'Завантаження...' : 'Показати погоду'}
         </button>
       </form>
 
@@ -259,7 +259,7 @@ function Weather() {
         <div className="weather-result">
           <div className="weather-current">
             <div>
-              <span className="eyebrow">Сейчас</span>
+              <span className="eyebrow">Зараз</span>
               <h3>
                 {weather.location.name}, {weather.location.country}
               </h3>
@@ -272,13 +272,13 @@ function Weather() {
 
               <div className="weather-details">
                 <span>
-                  Ощущается: {Math.round(weather.current.feelslike_c)}°C
+                  Відчувається: {Math.round(weather.current.feelslike_c)}°C
                 </span>
                 <span>
-                  Влажность: {weather.current.humidity}%
+                  Вологість: {weather.current.humidity}%
                 </span>
                 <span>
-                  Ветер: {weather.current.wind_kph} км/ч
+                  Вітер: {weather.current.wind_kph} км/г
                 </span>
               </div>
             </div>
@@ -324,16 +324,16 @@ function Weather() {
 }
 function Products() {
   return <div>
-    <div className="section-heading"><div><span className="eyebrow">Ваши сервисы</span><h2>Мои продукты</h2><p>Здесь разместим красивые карточки со ссылками на ваши действующие проекты.</p></div><div className="big-icon">🔗</div></div>
+    <div className="section-heading"><div><span className="eyebrow">Ваши сервисы</span><h2>Мої продукти</h2><p>Здесь разместим красивые карточки со ссылками на ваши действующие проекты.</p></div><div className="big-icon">🔗</div></div>
     <div className="cards">
-      <article className="card"><div className="card-icon">🎬</div><h3>VeoStudio AI Video</h3><p>Создание AI-видео.</p><button disabled>Добавим ссылку</button></article>
-      <article className="card"><div className="card-icon">🤖</div><h3>AI Assistant</h3><p>Удобный AI-помощник.</p><button disabled>Добавим ссылку</button></article>
+      <article className="card"><div className="card-icon">🎬</div><h3>VeoStudio AI Video</h3><p> AI-відео.</p><button disabled>https://t.me/VeoStudioAI_bot</button></article>
+      <article className="card"><div className="card-icon">🤖</div><h3>AI Assistant</h3><p> AI-помічник.</p><button disabled>https://t.me/AIasistent_bot</button></article>
       <article className="card">
   <div className="card-icon">🎬</div>
   <h3>VeoStudio</h3>
-  <p>Создавайте AI-видео онлайн.</p>
+  <p>Зробити AI-відео онлайн.</p>
   <a href="https://getveostudio.app" target="_blank" rel="noopener noreferrer">
-    Открыть сайт
+    Відкрити сайт
   </a>
 </article>
     </div>
