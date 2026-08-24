@@ -334,10 +334,22 @@ function Weather() {
 }
 function Products() {
   return <div>
-    <div className="section-heading"><div><span className="eyebrow">Ваши сервисы</span><h2>Мої продукти</h2><p>Здесь разместим красивые карточки со ссылками на ваши действующие проекты.</p></div><div className="big-icon">🔗</div></div>
+    <div className="section-heading"><div><span className="eyebrow">Сервіси</span><h2>Мої продукти</h2><p>Тут знаходяться сервіси з посиланням.</p></div><div className="big-icon">🔗</div></div>
     <div className="cards">
-      <article className="card"><div className="card-icon">🎬</div><h3>VeoStudio AI Video</h3><p> AI-відео.</p><button disabled>https://t.me/VeoStudioAI_bot</button></article>
-      <article className="card"><div className="card-icon">🤖</div><h3>AI Assistant</h3><p> AI-помічник.</p><button disabled>https://t.me/AIasistent_bot</button></article>
+      <article className="card"><div className="card-icon">🎬</div><h3>VeoStudio AI Video</h3><p> AI-відео.</p><button disabled><a
+  href="https://t.me/VeoStudioAI_bot"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Відкрити бота
+</a></button></article>
+      <article className="card"><div className="card-icon">🤖</div><h3>AI Assistant</h3><p> AI-помічник.</p><button disabled><a
+  href="https://t.me/AIasistent_bot"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Відкрити AI Assistant
+</a></button></article>
       <article className="card">
   <div className="card-icon">🎬</div>
   <h3>VeoStudio</h3>
