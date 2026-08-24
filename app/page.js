@@ -241,7 +241,14 @@ function Products() {
     <div className="cards">
       <article className="card"><div className="card-icon">🎬</div><h3>VeoStudio AI Video</h3><p>Создание AI-видео.</p><button disabled>Добавим ссылку</button></article>
       <article className="card"><div className="card-icon">🤖</div><h3>AI Assistant</h3><p>Удобный AI-помощник.</p><button disabled>Добавим ссылку</button></article>
-      <article className="card"><div className="card-icon">🔮</div><h3>Tarot & 36 Cards</h3><p>Онлайн-сервис и Telegram-проект.</p><button disabled>Добавим ссылку</button></article>
+      <article className="card">
+  <div className="card-icon">🎬</div>
+  <h3>VeoStudio</h3>
+  <p>Создавайте AI-видео онлайн.</p>
+  <a href="https://getveostudio.app" target="_blank" rel="noopener noreferrer">
+    Открыть сайт
+  </a>
+</article>
     </div>
   </div>;
 }
