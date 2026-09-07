@@ -5,6 +5,7 @@ import { useState } from 'react';
 export default function FindCheaperPage() {
   const [url, setUrl] = useState('');
   const [message, setMessage] = useState('');
+  const [image, setImage] = useState('');
 
   async function handleSearch() {
   const value = url.trim();
@@ -27,8 +28,10 @@ export default function FindCheaperPage() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ url: value }),
-    });
+      body: JSON.stringify({
+  url: value,
+  image: image,
+}),
 
     const data = await response.json();
 
@@ -105,9 +108,25 @@ export default function FindCheaperPage() {
   </label>
 
   <input
-    type="file"
-    accept="image/*"
-  />
+  type="file"
+  accept="image/*"
+  onChange={(e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      setImage('');
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  }}
+/>
 </div>
 
       {message && (
