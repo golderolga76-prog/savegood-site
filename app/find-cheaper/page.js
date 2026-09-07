@@ -5,7 +5,7 @@ import { useState } from 'react';
 export default function FindCheaperPage() {
   const [url, setUrl] = useState('');
   const [message, setMessage] = useState('');
-  const [image, setImage] = useState('');
+  const [imageFile, setImageFile] = useState(null);
 
   async function handleSearch() {
   const value = url.trim();
@@ -23,6 +23,18 @@ export default function FindCheaperPage() {
   setMessage('Шукаємо товар...');
 
   try {
+    let image = '';
+
+if (imageFile) {
+  image = await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+
+    reader.readAsDataURL(imageFile);
+  });
+}
     const response = await fetch('/api/find-cheaper', {
       method: 'POST',
       headers: {
@@ -70,9 +82,10 @@ export default function FindCheaperPage() {
       <input
         type="url"
         value={url}
-        onChange={(e) => setUrl(e.target.value)}
-        placeholder="Вставте посилання на товар"
-        style={{
+        onChange={(e) => {
+      const file = e.target.files?.[0] || null;
+         setImageFile(file);
+         }}
           width: '100%',
           boxSizing: 'border-box',
           padding: '14px',
@@ -112,12 +125,10 @@ export default function FindCheaperPage() {
   type="file"
   accept="image/*"
   onChange={(e) => {
-    const file = e.target.files?.[0];
-
-    if (!file) {
-      setImage('');
-      return;
-    }
+    const file = e.target.files?.[0] || null;
+    setImageFile(file);
+  }}
+/>
 
     const reader = new FileReader();
 
