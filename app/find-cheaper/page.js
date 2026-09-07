@@ -6,37 +6,46 @@ export default function FindCheaperPage() {
   const [url, setUrl] = useState('');
   const [message, setMessage] = useState('');
 
-  function handleSearch() {
-    const value = url.trim();
+  async function handleSearch() {
+  const value = url.trim();
 
-    if (!value) {
-      setMessage('Вставте посилання на товар.');
+  if (!value) {
+    setMessage('Вставте посилання на товар.');
+    return;
+  }
+
+  if (!value.startsWith('http://') && !value.startsWith('https://')) {
+    setMessage('Будь ласка, вставте повне посилання на товар.');
+    return;
+  }
+
+  setMessage('Шукаємо товар...');
+
+  try {
+    const response = await fetch('/api/find-cheaper', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ url: value }),
+    });
+
+    const data = await response.json();
+
+    if (!data.ok) {
+      setMessage(data.error || 'Сталася помилка.');
       return;
-    }
-
-    if (!value.startsWith('http://') && !value.startsWith('https://')) {
-      setMessage('Будь ласка, вставте повне посилання на товар.');
-      return;
-    }
-
-    let shop = 'магазині';
-
-    if (value.includes('temu.')) {
-      shop = 'Temu';
-    } else if (value.includes('aliexpress.')) {
-      shop = 'AliExpress';
-    } else if (value.includes('shein.')) {
-      shop = 'SHEIN';
-    } else if (value.includes('amazon.')) {
-      shop = 'Amazon';
     }
 
     setMessage(
-      `Посилання з ${shop} отримано. Наступним кроком підключимо пошук такого самого або схожого товару дешевше.`
+      `Посилання отримано. Магазин: ${data.shop}. Наступним кроком підключимо пошук товару.`
     );
+  } catch (error) {
+    setMessage('Не вдалося підключитися до пошуку.');
   }
+}
+  return(
 
-  return (
     <main
       style={{
         padding: '40px 20px',
