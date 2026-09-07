@@ -8,58 +8,59 @@ export default function FindCheaperPage() {
   const [imageFile, setImageFile] = useState(null);
 
   async function handleSearch() {
-  const value = url.trim();
+    const value = url.trim();
 
-  if (!value) {
-    setMessage('Вставте посилання на товар.');
-    return;
-  }
-
-  if (!value.startsWith('http://') && !value.startsWith('https://')) {
-    setMessage('Будь ласка, вставте повне посилання на товар.');
-    return;
-  }
-
-  setMessage('Шукаємо товар...');
-
-  try {
-    let image = '';
-
-if (imageFile) {
-  image = await new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.onloadend = () => resolve(reader.result);
-    reader.onerror = reject;
-
-    reader.readAsDataURL(imageFile);
-  });
-}
-    const response = await fetch('/api/find-cheaper', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-  url: value,
-  image: image,
-}),
-});     
-
-    const data = await response.json();
-
-    if (!data.ok) {
-      setMessage(data.error || 'Сталася помилка.');
+    if (!value) {
+      setMessage('Вставте посилання на товар.');
       return;
     }
 
-    setMessage(data.result || 'Товар визначено.');
-  } catch (error) {
-    setMessage('Не вдалося підключитися до пошуку.');
-  }
-}
-  return(
+    if (!value.startsWith('http://') && !value.startsWith('https://')) {
+      setMessage('Будь ласка, вставте повне посилання на товар.');
+      return;
+    }
 
+    setMessage('Шукаємо товар...');
+
+    try {
+      let image = '';
+
+      if (imageFile) {
+        image = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+
+          reader.onloadend = () => resolve(reader.result);
+          reader.onerror = reject;
+
+          reader.readAsDataURL(imageFile);
+        });
+      }
+
+      const response = await fetch('/api/find-cheaper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url: value,
+          image: image,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!data.ok) {
+        setMessage(data.error || 'Сталася помилка.');
+        return;
+      }
+
+      setMessage(data.result || 'Товар визначено.');
+    } catch (error) {
+      setMessage('Не вдалося підключитися до пошуку.');
+    }
+  }
+
+  return (
     <main
       style={{
         padding: '40px 20px',
@@ -80,24 +81,46 @@ if (imageFile) {
       </p>
 
       <input
-        type="file"
-        accept="image/*"
-        onChange={(e) => {
-         const file = e.target.files?.[0] || null;
-           setImageFile(file);
-        }}
+        type="text"
+        value={url}
+        onChange={(e) => setUrl(e.target.value)}
+        placeholder="Вставте посилання на товар"
         style={{
           width: '100%',
           boxSizing: 'border-box',
           padding: '14px',
           fontSize: '16px',
+          marginTop: '20px',
+          borderRadius: '10px',
+          border: '1px solid #ccc',
+        }}
+      />
+
+      <div style={{ marginTop: '18px' }}>
+        <label
+          style={{
+            display: 'block',
+            marginBottom: '8px',
+            fontWeight: '600',
           }}
-          />
+        >
+          📷 Додати фото товару
+        </label>
+
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files?.[0] || null;
+            setImageFile(file);
+          }}
+        />
+      </div>
 
       <button
         onClick={handleSearch}
         style={{
-          marginTop: '15px',
+          marginTop: '18px',
           padding: '14px 24px',
           fontSize: '16px',
           fontWeight: '600',
@@ -108,36 +131,6 @@ if (imageFile) {
       >
         Знайти дешевше
       </button>
-<div style={{ marginTop: '18px' }}>
-  <label
-    style={{
-      display: 'block',
-      marginBottom: '8px',
-      fontWeight: '600',
-    }}
-  >
-    📷 Додати фото товару
-  </label>
-
-  <input
-  type="file"
-  accept="image/*"
-  onChange={(e) => {
-    const file = e.target.files?.[0] || null;
-    setImageFile(file);
-  }}
-/>
-
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
-
-    reader.readAsDataURL(file);
-  }}
-/>
-</div>
 
       {message && (
         <div
@@ -146,6 +139,7 @@ if (imageFile) {
             padding: '16px',
             border: '1px solid #ddd',
             borderRadius: '10px',
+            whiteSpace: 'pre-wrap',
           }}
         >
           {message}
@@ -156,9 +150,9 @@ if (imageFile) {
         <h2 style={{ fontSize: '20px' }}>Як це працюватиме?</h2>
 
         <p>1. Вставляєте посилання на товар.</p>
-        <p>2. Ми визначаємо товар і його характеристики.</p>
-        <p>3. Шукаємо такий самий або максимально схожий товар.</p>
-        <p>4. Порівнюємо ціну та доступні варіанти.</p>
+        <p>2. Додаєте фото товару, якщо сайт не дає прочитати сторінку.</p>
+        <p>3. Ми визначаємо товар і його характеристики.</p>
+        <p>4. Шукаємо такий самий або максимально схожий товар.</p>
         <p>5. Показуємо, де вигідніше купити.</p>
       </div>
     </main>
