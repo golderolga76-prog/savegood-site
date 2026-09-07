@@ -78,9 +78,11 @@ ${url || 'не вказано'}
         ?.text || '';
 
     return Response.json({
-      ok: true,
-      result: text || 'Товар не вдалося визначити.',
-    });
+  ok: true,
+  result:
+    `Фото отримано сервером: ${image ? 'ТАК' : 'НІ'}\n\n` +
+    (text || 'Товар не вдалося визначити.'),
+});
   } catch (error) {
     console.error(error);
 
