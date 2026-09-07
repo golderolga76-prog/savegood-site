@@ -7,15 +7,69 @@ export default function FindCheaperPage() {
   const [message, setMessage] = useState('');
   const [imageFile, setImageFile] = useState(null);
 
+  async function convertImageToJpeg(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        const img = new Image();
+
+        img.onload = () => {
+          const maxSize = 1200;
+
+          let width = img.width;
+          let height = img.height;
+
+          if (width > maxSize || height > maxSize) {
+            const scale = Math.min(maxSize / width, maxSize / height);
+            width = Math.round(width * scale);
+            height = Math.round(height * scale);
+          }
+
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext('2d');
+
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, width, height);
+
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const jpegData = canvas.toDataURL('image/jpeg', 0.9);
+
+          resolve(jpegData);
+        };
+
+        img.onerror = () => {
+          reject(new Error('Не вдалося прочитати фото.'));
+        };
+
+        img.src = reader.result;
+      };
+
+      reader.onerror = () => {
+        reject(new Error('Не вдалося прочитати файл.'));
+      };
+
+      reader.readAsDataURL(file);
+    });
+  }
+
   async function handleSearch() {
     const value = url.trim();
 
-    if (!value) {
-      setMessage('Вставте посилання на товар.');
+    if (!value && !imageFile) {
+      setMessage('Вставте посилання або додайте фото товару.');
       return;
     }
 
-    if (!value.startsWith('http://') && !value.startsWith('https://')) {
+    if (
+      value &&
+      !value.startsWith('http://') &&
+      !value.startsWith('https://')
+    ) {
       setMessage('Будь ласка, вставте повне посилання на товар.');
       return;
     }
@@ -26,15 +80,11 @@ export default function FindCheaperPage() {
       let image = '';
 
       if (imageFile) {
-        image = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-
-          reader.onloadend = () => resolve(reader.result);
-          reader.onerror = reject;
-
-          reader.readAsDataURL(imageFile);
-        });
+        setMessage('Обробляємо фото...');
+        image = await convertImageToJpeg(imageFile);
       }
+
+      setMessage('Шукаємо товар...');
 
       const response = await fetch('/api/find-cheaper', {
         method: 'POST',
@@ -56,7 +106,8 @@ export default function FindCheaperPage() {
 
       setMessage(data.result || 'Товар визначено.');
     } catch (error) {
-      setMessage('Не вдалося підключитися до пошуку.');
+      console.error(error);
+      setMessage('Не вдалося обробити фото або підключитися до пошуку.');
     }
   }
 
@@ -71,7 +122,12 @@ export default function FindCheaperPage() {
     >
       <h1>🔎 Знайти дешевше</h1>
 
-      <p style={{ fontSize: '18px', lineHeight: '1.5' }}>
+      <p
+        style={{
+          fontSize: '18px',
+          lineHeight: '1.5',
+        }}
+      >
         Вставте посилання на товар — SaveGood допоможе знайти такий самий
         або схожий варіант дешевше.
       </p>
@@ -109,12 +165,23 @@ export default function FindCheaperPage() {
 
         <input
           type="file"
-          accept="image/*"
+          accept="image/jpeg,image/png,image/webp,image/gif"
           onChange={(e) => {
             const file = e.target.files?.[0] || null;
             setImageFile(file);
           }}
         />
+
+        {imageFile && (
+          <p
+            style={{
+              marginTop: '8px',
+              fontSize: '14px',
+            }}
+          >
+            Вибрано: {imageFile.name}
+          </p>
+        )}
       </div>
 
       <button
