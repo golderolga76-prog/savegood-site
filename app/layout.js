@@ -14,6 +14,11 @@ export default function RootLayout({ children }) {
     <meta name="monetag" content="4770140e8e69c804715245b155eaa84f"/>
     <script
   dangerouslySetInnerHTML={{
+    __html: `(function(s){s.dataset.zone='11748735';s.src='https://n6wxm.com/vignette.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
+  }}
+/>
+    <script
+  dangerouslySetInnerHTML={{
     __html: `(function(s){s.dataset.zone='11748704';s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))`,
   }}
 />
