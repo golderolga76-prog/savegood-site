@@ -32,6 +32,7 @@ export default function FindCheaperPage() {
   url: value,
   image: image,
 }),
+});     
 
     const data = await response.json();
 
