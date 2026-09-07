@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 const tabs = [
+  ['find-cheaper', '🔎', 'Знайти дешевше'],
   ['flights', '✈️', 'Авіаквитки'],
   ['hotels', '🏨', 'Готелі'],
   ['tours', '🧳', 'Подорожі'],
@@ -33,13 +34,15 @@ export default function Home() {
       <nav className="tabs" aria-label="Основные разделы">
         {tabs.map(([id, icon, label]) => (
           <button key={id} onClick={() => {
-  if (id === 'flights') {
-    window.location.href = '/flights';
-  } else if (id === 'hotels') {
-    window.location.href = '/hotels';
-  } else {
-    setTab(id);
-  }
+  if (id === 'find-cheaper') {
+  window.location.href = '/find-cheaper';
+} else if (id === 'flights') {
+  window.location.href = '/flights';
+} else if (id === 'hotels') {
+  window.location.href = '/hotels';
+} else {
+  setTab(id);
+}
 }} className={tab === id ? 'tab active' : 'tab'}>
             <span>{icon}</span>{label}
           </button>
