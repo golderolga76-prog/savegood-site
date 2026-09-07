@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-    <meta name="monetag" content="4770140e8e69c804715245b155eaa84f">
+    <meta name="monetag" content="4770140e8e69c804715245b155eaa84f"/>
     <meta name='impact-site-verification' value='a433a143-8881-4c1f-9905-6d7acc21ef46'/>
         <script
           dangerouslySetInnerHTML={{
