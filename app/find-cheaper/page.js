@@ -93,6 +93,22 @@ export default function FindCheaperPage() {
       >
         Знайти дешевше
       </button>
+<div style={{ marginTop: '18px' }}>
+  <label
+    style={{
+      display: 'block',
+      marginBottom: '8px',
+      fontWeight: '600',
+    }}
+  >
+    📷 Додати фото товару
+  </label>
+
+  <input
+    type="file"
+    accept="image/*"
+  />
+</div>
 
       {message && (
         <div
