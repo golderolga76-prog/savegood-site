@@ -37,9 +37,7 @@ export default function FindCheaperPage() {
       return;
     }
 
-    setMessage(
-      `Посилання отримано. Магазин: ${data.shop}. Наступним кроком підключимо пошук товару.`
-    );
+    setMessage(data.result || 'Товар визначено.');
   } catch (error) {
     setMessage('Не вдалося підключитися до пошуку.');
   }
