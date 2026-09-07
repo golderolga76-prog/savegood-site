@@ -32,7 +32,15 @@ export default function Home() {
     </header>
       <nav className="tabs" aria-label="Основные разделы">
         {tabs.map(([id, icon, label]) => (
-          <button key={id} onClick={() => setTab(id)} className={tab === id ? 'tab active' : 'tab'}>
+          <button key={id} onClick={() => {
+  if (id === 'flights') {
+    window.location.href = '/flights';
+  } else if (id === 'hotels') {
+    window.location.href = '/hotels';
+  } else {
+    setTab(id);
+  }
+}} className={tab === id ? 'tab active' : 'tab'}>
             <span>{icon}</span>{label}
           </button>
         ))}
