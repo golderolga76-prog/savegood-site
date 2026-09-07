@@ -80,21 +80,19 @@ if (imageFile) {
       </p>
 
       <input
-        type="url"
-        value={url}
+        type="file"
+        accept="image/*"
         onChange={(e) => {
-      const file = e.target.files?.[0] || null;
-         setImageFile(file);
-         }}
+         const file = e.target.files?.[0] || null;
+           setImageFile(file);
+        }}
+        style={{
           width: '100%',
           boxSizing: 'border-box',
           padding: '14px',
           fontSize: '16px',
-          marginTop: '20px',
-          borderRadius: '10px',
-          border: '1px solid #ccc',
-        }}
-      />
+          }}
+          />
 
       <button
         onClick={handleSearch}
