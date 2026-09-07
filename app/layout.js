@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
+      <head><meta name='impact-site-verification' value='a433a143-8881-4c1f-9905-6d7acc21ef46'/>
         <script
           dangerouslySetInnerHTML={{
             __html: `
