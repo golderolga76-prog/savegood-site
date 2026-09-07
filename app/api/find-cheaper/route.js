@@ -1,13 +1,45 @@
 export async function POST(request) {
   try {
     const body = await request.json();
-    const url = body?.url?.trim();
 
-    if (!url) {
+    const url = body?.url?.trim() || '';
+    const image = body?.image || '';
+
+    if (!url && !image) {
       return Response.json(
-        { ok: false, error: 'Посилання не передано.' },
+        { ok: false, error: 'Додайте посилання або фото товару.' },
         { status: 400 }
       );
+    }
+
+    const content = [
+      {
+        type: 'input_text',
+        text: `
+Визнач товар максимально точно.
+
+Посилання:
+${url || 'не вказано'}
+
+Якщо є фото, використовуй його як головне джерело для визначення товару.
+
+Поверни коротко українською:
+
+Назва:
+Категорія:
+Основні характеристики:
+Пошуковий запит для AliExpress:
+
+Пошуковий запит для AliExpress зроби англійською мовою, коротким і придатним для пошуку такого самого або максимально схожого товару.
+        `,
+      },
+    ];
+
+    if (image) {
+      content.push({
+        type: 'input_image',
+        image_url: image,
+      });
     }
 
     const response = await fetch('https://api.openai.com/v1/responses', {
@@ -18,20 +50,12 @@ export async function POST(request) {
       },
       body: JSON.stringify({
         model: 'gpt-5.6-luna',
-        tools: [{ type: 'web_search_preview' }],
-        input: `
-Визнач товар за цим посиланням:
-
-${url}
-
-Спробуй знайти інформацію про цю сторінку або товар через веб-пошук.
-
-Поверни коротко українською:
-Назва:
-Категорія:
-Характеристики:
-Пошуковий запит для AliExpress:
-        `,
+        input: [
+          {
+            role: 'user',
+            content,
+          },
+        ],
       }),
     });
 
@@ -39,6 +63,7 @@ ${url}
 
     if (!response.ok) {
       console.error(data);
+
       return Response.json(
         { ok: false, error: 'Помилка OpenAI.' },
         { status: 500 }
@@ -54,7 +79,7 @@ ${url}
 
     return Response.json({
       ok: true,
-      result: text,
+      result: text || 'Товар не вдалося визначити.',
     });
   } catch (error) {
     console.error(error);
