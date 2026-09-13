@@ -16,7 +16,7 @@ export async function GET() {
 
     const response = await fetch(feedUrl, {
       headers: {
-        Range: 'bytes=0-15000',
+        Range: 'bytes=0-3000',
       },
       cache: 'no-store',
     });
