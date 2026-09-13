@@ -129,15 +129,11 @@ ${url || 'не вказано'}
       stores.map((store) => `${store.name}: ${store.url}`).join('\n');
 
     return Response.json({
-      ok: true,
-      result,
-    });
-  } catch (error) {
-    console.error(error);
-
-    return Response.json(
-      { ok: false, error: 'Не вдалося визначити товар.' },
-      { status: 500 }
-    );
-  }
-}
+  ok: true,
+  product: {
+    name: product.name || '-',
+    category: product.category || '-',
+    features: product.features || '-',
+  },
+  stores,
+});
