@@ -18,8 +18,6 @@ export default function FlightsPage() {
   );
 }
 
-    window.location.href = `/flights/results?${query.toString()}`;
-  }
 
   return (
     <main
