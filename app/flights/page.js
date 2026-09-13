@@ -9,14 +9,14 @@ export default function FlightsPage() {
   const [passengers, setPassengers] = useState("1");
 
   function handleSearch(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const query = new URLSearchParams({
-      from,
-      to,
-      date,
-      passengers,
-    });
+  window.open(
+    "https://aviasales.tp.st/NmyfLV1M",
+    "_blank",
+    "noopener,noreferrer"
+  );
+}
 
     window.location.href = `/flights/results?${query.toString()}`;
   }
