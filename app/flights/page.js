@@ -44,10 +44,13 @@ export default function FlightsPage() {
   const params = `${fromCode}${dateCode}${toCode}${passengers}`;
 
   window.open(
-    `https://www.aviasales.com/search/${params}`,
-    "_blank",
-    "noopener,noreferrer"
-  );
+    `https://tp.media/r?campaign_id=100&marker=769368&p=4114&trs=566088&u=${encodeURIComponent(
+    `https://www.aviasales.com/search/${params}`
+  )}`,
+  "_blank",
+  "noopener,noreferrer"
+);
+
 }
 
 
