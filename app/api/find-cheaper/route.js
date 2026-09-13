@@ -91,44 +91,37 @@ ${url || 'не вказано'}
     const q = encodeURIComponent(product.searchQuery || product.name || '');
 
     const stores = [
-      {
-        name: 'AliExpress',
-        url: `https://www.aliexpress.com/wholesale?SearchText=${q}`,
-      },
-      {
-        name: 'Temu',
-        url: `https://www.temu.com/search_result.html?search_key=${q}`,
-      },
-      {
-        name: 'Amazon',
-        url: `https://www.amazon.com/s?k=${q}`,
-      },
-      {
-        name: 'SHEIN',
-        url: `https://www.shein.com/pdsearch/${q}/`,
-      },
-      {
-        name: 'eBay',
-        url: `https://www.ebay.com/sch/i.html?_nkw=${q}`,
-      },
-      {
-        name: 'Banggood',
-        url: `https://www.banggood.com/search/${q}.html`,
-      },
-      {
-        name: 'Skroutz',
-        url: `https://www.skroutz.gr/search?keyphrase=${q}`,
-      },
-    ];
+  {
+    name: 'AliExpress',
+    url: `https://www.aliexpress.com/wholesale?SearchText=${q}`,
+  },
+  {
+    name: 'Temu',
+    url: `https://www.temu.com/search_result.html?search_key=${q}`,
+  },
+  {
+    name: 'Amazon',
+    url: `https://www.amazon.com/s?k=${q}`,
+  },
+  {
+    name: 'SHEIN',
+    url: `https://www.shein.com/pdsearch/${q}/`,
+  },
+  {
+    name: 'eBay',
+    url: `https://www.ebay.com/sch/i.html?_nkw=${q}`,
+  },
+  {
+    name: 'Banggood',
+    url: `https://www.banggood.com/search/${q}.html`,
+  },
+  {
+    name: 'Skroutz',
+    url: `https://www.skroutz.gr/search?keyphrase=${q}`,
+  },
+];
 
-    const result =
-      `Назва: ${product.name || '-'}\n` +
-      `Категорія: ${product.category || '-'}\n` +
-      `Основні характеристики: ${product.features || '-'}\n\n` +
-      `Пошук у магазинах:\n\n` +
-      stores.map((store) => `${store.name}: ${store.url}`).join('\n');
-
-    return Response.json({
+return Response.json({
   ok: true,
   product: {
     name: product.name || '-',
@@ -137,3 +130,12 @@ ${url || 'не вказано'}
   },
   stores,
 });
+  } catch (error) {
+    console.error(error);
+
+    return Response.json(
+      { ok: false, error: 'Не вдалося визначити товар.' },
+      { status: 500 }
+    );
+  }
+}
