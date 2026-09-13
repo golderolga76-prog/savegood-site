@@ -5,6 +5,8 @@ import { useState } from 'react';
 export default function FindCheaperPage() {
   const [url, setUrl] = useState('');
   const [message, setMessage] = useState('');
+  const [product, setProduct] = useState(null);
+  const [stores, setStores] = useState([]);
   const [imageFile, setImageFile] = useState(null);
 
   async function convertImageToJpeg(file) {
@@ -100,11 +102,13 @@ export default function FindCheaperPage() {
       const data = await response.json();
 
       if (!data.ok) {
-        setMessage(data.error || 'Сталася помилка.');
-        return;
-      }
+  setMessage(data.error || 'Сталася помилка.');
+  return;
+}
 
-      setMessage(data.result || 'Товар визначено.');
+  setProduct(data.product || null);
+  setStores(data.stores || []);
+  setMessage('');
     } catch (error) {
       console.error(error);
       setMessage('Не вдалося обробити фото або підключитися до пошуку.');
@@ -200,18 +204,62 @@ export default function FindCheaperPage() {
       </button>
 
       {message && (
-        <div
+  <div
+    style={{
+      marginTop: '22px',
+      padding: '16px',
+      border: '1px solid #ddd',
+      borderRadius: '10px',
+      whiteSpace: 'pre-wrap',
+    }}
+  >
+    {message}
+  </div>
+)}
+
+{product && (
+  <div
+    style={{
+      marginTop: '22px',
+      padding: '18px',
+      border: '1px solid #ddd',
+      borderRadius: '12px',
+    }}
+  >
+    <h2 style={{ marginTop: 0 }}>{product.name}</h2>
+
+    <p><strong>Категорія:</strong> {product.category}</p>
+    <p><strong>Характеристики:</strong> {product.features}</p>
+
+    <h3 style={{ marginTop: '24px' }}>Де шукати дешевше:</h3>
+
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '10px',
+      }}
+    >
+      {stores.map((store) => (
+        <a
+          key={store.name}
+          href={store.url}
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
-            marginTop: '22px',
-            padding: '16px',
-            border: '1px solid #ddd',
+            padding: '12px 16px',
             borderRadius: '10px',
-            whiteSpace: 'pre-wrap',
+            textDecoration: 'none',
+            border: '1px solid #ccc',
+            fontWeight: '600',
           }}
         >
-          {message}
-        </div>
-      )}
+          {store.name}
+        </a>
+      ))}
+    </div>
+  </div>
+)}
 
       <div style={{ marginTop: '35px' }}>
         <h2 style={{ fontSize: '20px' }}>Як це працюватиме?</h2>
