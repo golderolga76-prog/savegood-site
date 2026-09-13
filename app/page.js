@@ -149,9 +149,7 @@ function Tours() {
 
       <a
         className="primary"
-        href="https://tiqets.tp.st/ytO42Sgg"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/flights"
       >
         Знайти квитки та екскурсії
       </a>
