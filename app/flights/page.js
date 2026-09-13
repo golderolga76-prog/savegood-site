@@ -44,7 +44,7 @@ export default function FlightsPage() {
   const params = `${fromCode}${dateCode}${toCode}${passengers}`;
 
   window.open(
-    `https://www.aviasales.com/?params=${params}`,
+    `https://www.aviasales.com/search/${params}`,
     "_blank",
     "noopener,noreferrer"
   );
