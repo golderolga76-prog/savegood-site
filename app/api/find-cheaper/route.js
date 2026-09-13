@@ -21,17 +21,16 @@ export async function POST(request) {
 Посилання:
 ${url || 'не вказано'}
 
-Якщо є фото, використовуй його як головне джерело для визначення товару.
+Якщо є фото, використовуй його як головне джерело.
 
-Поверни коротко українською:
+Поверни ТІЛЬКИ JSON без markdown:
 
-Назва:
-Категорія:
-Основні характеристики:
-Пошуковий запит для AliExpress:
-
-Пошуковий запит для AliExpress зроби англійською мовою,
-коротким і придатним для пошуку такого самого або максимально схожого товару.
+{
+  "name": "назва товару українською",
+  "category": "категорія українською",
+  "features": "короткі основні характеристики українською",
+  "searchQuery": "короткий англомовний пошуковий запит для пошуку такого самого або максимально схожого товару"
+}
         `,
       },
     ];
@@ -78,11 +77,60 @@ ${url || 'не вказано'}
         .find((item) => item.type === 'output_text')
         ?.text || '';
 
+    let product;
+
+    try {
+      product = JSON.parse(text);
+    } catch {
+      return Response.json(
+        { ok: false, error: 'Не вдалося розібрати відповідь про товар.' },
+        { status: 500 }
+      );
+    }
+
+    const q = encodeURIComponent(product.searchQuery || product.name || '');
+
+    const stores = [
+      {
+        name: 'AliExpress',
+        url: `https://www.aliexpress.com/wholesale?SearchText=${q}`,
+      },
+      {
+        name: 'Temu',
+        url: `https://www.temu.com/search_result.html?search_key=${q}`,
+      },
+      {
+        name: 'Amazon',
+        url: `https://www.amazon.com/s?k=${q}`,
+      },
+      {
+        name: 'SHEIN',
+        url: `https://www.shein.com/pdsearch/${q}/`,
+      },
+      {
+        name: 'eBay',
+        url: `https://www.ebay.com/sch/i.html?_nkw=${q}`,
+      },
+      {
+        name: 'Banggood',
+        url: `https://www.banggood.com/search/${q}.html`,
+      },
+      {
+        name: 'Skroutz',
+        url: `https://www.skroutz.gr/search?keyphrase=${q}`,
+      },
+    ];
+
+    const result =
+      `Назва: ${product.name || '-'}\n` +
+      `Категорія: ${product.category || '-'}\n` +
+      `Основні характеристики: ${product.features || '-'}\n\n` +
+      `Пошук у магазинах:\n\n` +
+      stores.map((store) => `${store.name}: ${store.url}`).join('\n');
+
     return Response.json({
       ok: true,
-      result:
-        `Фото отримано сервером: ${image ? 'ТАК' : 'НІ'}\n\n` +
-        (text || 'Товар не вдалося визначити.'),
+      result,
     });
   } catch (error) {
     console.error(error);
