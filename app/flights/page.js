@@ -11,8 +11,40 @@ export default function FlightsPage() {
   function handleSearch(e) {
   e.preventDefault();
 
+  const cityCodes = {
+    "салоники": "SKG",
+    "thessaloniki": "SKG",
+    "афины": "ATH",
+    "athens": "ATH",
+    "киев": "IEV",
+    "kyiv": "IEV",
+    "варшава": "WAW",
+    "warsaw": "WAW",
+    "берлин": "BER",
+    "berlin": "BER",
+    "рим": "ROM",
+    "rome": "ROM",
+    "париж": "PAR",
+    "paris": "PAR"
+  };
+
+  const fromCode = cityCodes[from.trim().toLowerCase()];
+  const toCode = cityCodes[to.trim().toLowerCase()];
+
+  if (!fromCode || !toCode) {
+    alert("Пока этот город не найден. Попробуйте ввести название на английском.");
+    return;
+  }
+
+  const d = new Date(date);
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const dateCode = `${day}${month}`;
+
+  const params = `${fromCode}${dateCode}${toCode}${passengers}`;
+
   window.open(
-    "https://aviasales.tp.st/NmyfLV1M",
+    `https://www.aviasales.com/?params=${params}`,
     "_blank",
     "noopener,noreferrer"
   );
