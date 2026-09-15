@@ -39,6 +39,12 @@ export default function sitemap() {
       priority: 0.85,
     },
     {
+      url: 'https://savegood.store/nashi-servisy',
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: 'https://savegood.store/dzlegko-telegram-bot',
       lastModified,
       changeFrequency: 'weekly',
@@ -67,6 +73,24 @@ export default function sitemap() {
       lastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
+    },
+    {
+      url: 'https://savegood.store/dopomoga-z-ukrainskoiu-movoiu-5-9-klas',
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://savegood.store/dopomoga-z-istorii-po-foto',
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.85,
+    },
+    {
+      url: 'https://savegood.store/yak-pereviryty-domashnie-zavdannia-dytyny',
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.85,
     },
     {
       url: 'https://savegood.store/ai-assistant-telegram-bot',
