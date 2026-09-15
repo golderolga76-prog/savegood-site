@@ -36,7 +36,7 @@ export default function Page() {
       ]}
       secondTitle="AI-помічник у звичному месенджері"
       secondText="Відкрийте бота, поставте запитання текстом або скористайтеся підтримуваним голосовим форматом. Уся взаємодія відбувається в Telegram."
-      primaryHref="https://t.me/AIasistent_bot"
+      primaryHref="https://t.me/AIasistent_bot?start=savegood_assistant"
       primaryLabel="Відкрити AI Assistant"
       faq={[
         { q: 'Що вміє AI Assistant?', a: 'AI Assistant призначений для повсякденних текстових і голосових запитів у Telegram.' },
