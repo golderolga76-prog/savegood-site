@@ -63,6 +63,12 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
+      url: 'https://savegood.store/pryklady-zavdan-po-foto',
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: 'https://savegood.store/ai-assistant-telegram-bot',
       lastModified,
       changeFrequency: 'weekly',
