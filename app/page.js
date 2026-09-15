@@ -73,6 +73,24 @@ export default function Home() {
   <Products />
 </section>
 
+      <nav
+        aria-label="Корисні сторінки SaveGood"
+        style={{
+          marginTop: '28px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '14px',
+          fontSize: '14px',
+        }}
+      >
+        <a href="/ukrainians-in-europe">Українцям у Європі</a>
+        <a href="/cheap-flights-europe">Авіаквитки по Європі</a>
+        <a href="/hotels-in-europe">Готелі в Європі</a>
+        <a href="/find-cheaper-products">Знайти товар дешевше</a>
+        <a href="/ai-services">AI-сервіси</a>
+      </nav>
+
       <footer className="footer">© 2026 SaveGood.store</footer>
     </main>
   );
