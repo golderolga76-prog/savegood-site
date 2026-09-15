@@ -89,6 +89,7 @@ export default function Home() {
         <a href="/hotels-in-europe">Готелі в Європі</a>
         <a href="/find-cheaper-products">Знайти товар дешевше</a>
         <a href="/nashi-servisy">Наші сервіси</a>
+        <a href="/pro-savegood">Про SaveGood</a>
         <a href="/ai-services">AI-сервіси</a>
         <a href="/dzlegko-telegram-bot">ДЗЛегко</a>
         <a href="/perevirka-domashnoho-zavdannia-po-foto">Перевірка ДЗ по фото</a>
