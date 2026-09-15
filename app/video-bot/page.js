@@ -44,6 +44,7 @@ export default function VideoBotPage() {
         { q: 'Чим бот відрізняється від Veo Studio?', a: 'Бот дає простий Telegram-формат, а Veo Studio — окремий веб-сервіс із ширшим інтерфейсом для AI-відео.' },
       ]}
       related={[
+        ['/pryklady-ai-video-bot', 'Приклади промптів'],
         ['/dzlegko-telegram-bot', 'ДЗЛегко'],
         ['/ai-assistant-telegram-bot', 'AI Assistant'],
         ['/ai-services', 'Усі AI-сервіси'],
