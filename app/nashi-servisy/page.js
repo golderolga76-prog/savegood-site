@@ -133,6 +133,14 @@ export default function ServicesPage() {
         </p>
       </section>
 
+      <section style={{ marginTop: '36px' }}>
+        <h2>Про проєкт</h2>
+        <p style={{ lineHeight: 1.65 }}>
+          Хочете дізнатися, як влаштований SaveGood, які сервіси ми розвиваємо та що важливо знати про AI-відповіді й зовнішні партнерські посилання?
+        </p>
+        <Link href="/pro-savegood">Про SaveGood</Link>
+      </section>
+
       <ShareButtons title="Наші сервіси SaveGood" />
     </main>
   );
