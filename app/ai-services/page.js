@@ -9,6 +9,8 @@ export const metadata = {
 export default function Page() {
   return (
     <SeoLanding
+      description="AI-сервіси SaveGood: генерація AI-відео у Veo Studio та Telegram-боті, а також AI Assistant для текстових і голосових запитів."
+      canonical="https://savegood.store/ai-services"
       eyebrow="🤖 AI-сервіси"
       title="AI-сервіси та Telegram-боти SaveGood"
       intro="На SaveGood зібрані наші AI-інструменти: Veo Studio для створення AI-відео, Telegram-бот для генерації відео та AI Assistant для повсякденних текстових і голосових запитів."
@@ -21,6 +23,11 @@ export default function Page() {
       secondText="Ця сторінка допомагає швидко зрозуміти, які AI-інструменти доступні у SaveGood, і перейти до потрібного сервісу. Можливості та умови кожного продукту вказані на його власній сторінці."
       primaryHref="/video-bot"
       primaryLabel="Відкрити AI Video Bot"
+      faq={[
+        { q: 'Які AI-сервіси доступні через SaveGood?', a: 'На сторінці зібрані Veo Studio для створення AI-відео, AI Video Bot у Telegram та AI Assistant для текстових і голосових запитів.' },
+        { q: 'Чим Veo Studio відрізняється від AI Video Bot?', a: 'Veo Studio — це веб-сервіс із ширшим інтерфейсом для генерації відео, а AI Video Bot дає змогу запускати короткі генерації безпосередньо в Telegram.' },
+        { q: 'Чи потрібен Telegram для всіх AI-сервісів?', a: 'Ні. Veo Studio працює як окремий веб-сервіс, тоді як AI Video Bot і AI Assistant доступні через Telegram.' },
+      ]}
       related={[
         ['/find-cheaper-products', 'Знайти товар дешевше'],
         ['/ukrainians-in-europe', 'Українцям у Європі'],
