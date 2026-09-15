@@ -34,6 +34,9 @@ export default function Page() {
         ['/dzlegko-telegram-bot', 'ДЗЛегко'],
         ['/ai-assistant-telegram-bot', 'AI Assistant'],
         ['/video-bot', 'AI Video Bot'],
+        ['/pryklady-ai-video-bot', 'Приклади AI Video Bot'],
+        ['/pryklady-ai-assistant', 'Приклади AI Assistant'],
+        ['/pro-savegood', 'Про SaveGood'],
         ['/find-cheaper-products', 'Знайти товар дешевше'],
       ]}
     />
