@@ -29,6 +29,7 @@ export default function Page() {
         { q: 'Чи потрібно встановлювати окрему програму?', a: 'Ні. Достатньо Telegram і доступу до бота @DZDopomogaBot.' },
       ]}
       related={[
+        ['/dopomoga-z-domashnim-zavdanniam', 'Допомога з домашнім завданням 5–9 клас'],
         ['/ai-assistant-telegram-bot', 'AI Assistant'],
         ['/video-bot', 'AI Video Bot'],
         ['/ai-services', 'Усі AI-сервіси'],
