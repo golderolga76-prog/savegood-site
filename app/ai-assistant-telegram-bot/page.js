@@ -4,6 +4,14 @@ export const metadata = {
   title: 'AI Assistant у Telegram — AI-помічник для запитів | SaveGood',
   description: 'AI Assistant — Telegram-бот для текстових і голосових запитів. Відкрийте AI-помічника прямо в Telegram без окремої програми.',
   alternates: { canonical: 'https://savegood.store/ai-assistant-telegram-bot' },
+  openGraph: {
+    title: 'AI Assistant у Telegram | SaveGood',
+    description: 'AI-помічник для текстових і голосових запитів прямо в Telegram.',
+    url: 'https://savegood.store/ai-assistant-telegram-bot',
+    siteName: 'SaveGood',
+    type: 'website',
+    images: [{ url: 'https://savegood.store/api/og/assistant', width: 1200, height: 630 }],
+  },
 };
 
 export default function Page() {
