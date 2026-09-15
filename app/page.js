@@ -89,6 +89,9 @@ export default function Home() {
         <a href="/hotels-in-europe">Готелі в Європі</a>
         <a href="/find-cheaper-products">Знайти товар дешевше</a>
         <a href="/ai-services">AI-сервіси</a>
+        <a href="/dzlegko-telegram-bot">ДЗЛегко</a>
+        <a href="/ai-assistant-telegram-bot">AI Assistant</a>
+        <a href="/video-bot">AI Video Bot</a>
       </nav>
 
       <footer className="footer">© 2026 SaveGood.store</footer>
@@ -368,30 +371,44 @@ function Weather() {
 }
 function Products() {
   return <div>
-    <div className="section-heading"><div><span className="eyebrow">Сервіси</span><h2>Мої продукти</h2><p>Тут знаходяться сервіси з посиланням.</p></div><div className="big-icon">🔗</div></div>
+    <div className="section-heading">
+      <div>
+        <span className="eyebrow">Сервіси</span>
+        <h2>Мої продукти</h2>
+        <p>Окремі сторінки сервісів з описом і прямим переходом.</p>
+      </div>
+      <div className="big-icon">🔗</div>
+    </div>
     <div className="cards">
-      <article className="card"><div className="card-icon">🎬</div><h3>VeoStudio AI Video</h3><p> AI-відео.</p><button disabled><a
-  href="https://t.me/VeoStudioAI_bot"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Відкрити бота
-</a></button></article>
-      <article className="card"><div className="card-icon">🤖</div><h3>AI Assistant</h3><p> AI-помічник.</p><button disabled><a
-  href="https://t.me/AIasistent_bot"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Відкрити AI Assistant
-</a></button></article>
       <article className="card">
-  <div className="card-icon">🎬</div>
-  <h3>VeoStudio</h3>
-  <p>Зробити AI-відео онлайн.</p>
-  <a href="https://getveostudio.app" target="_blank" rel="noopener noreferrer">
-    Відкрити сайт
-  </a>
-</article>
+        <div className="card-icon">📚</div>
+        <h3>ДЗЛегко</h3>
+        <p>Допомога батькам зі шкільними домашніми завданнями.</p>
+        <a href="/dzlegko-telegram-bot">Детальніше</a>
+      </article>
+
+      <article className="card">
+        <div className="card-icon">🎬</div>
+        <h3>AI Video Bot</h3>
+        <p>Створення коротких AI-відео у Telegram.</p>
+        <a href="/video-bot">Детальніше</a>
+      </article>
+
+      <article className="card">
+        <div className="card-icon">🤖</div>
+        <h3>AI Assistant</h3>
+        <p>AI-помічник для текстових і голосових запитів.</p>
+        <a href="/ai-assistant-telegram-bot">Детальніше</a>
+      </article>
+
+      <article className="card">
+        <div className="card-icon">🎥</div>
+        <h3>Veo Studio</h3>
+        <p>Веб-сервіс для створення AI-відео онлайн.</p>
+        <a href="https://getveostudio.app" target="_blank" rel="noopener noreferrer">
+          Відкрити сайт
+        </a>
+      </article>
     </div>
   </div>;
 }
