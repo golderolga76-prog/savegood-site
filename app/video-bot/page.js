@@ -1,105 +1,38 @@
+import SeoLanding from '../_components/SeoLanding';
+
 export const metadata = {
-  title: 'AI Video Bot in Telegram — SaveGood',
-  description:
-    'Create AI videos directly in Telegram. Try the VeoStudio AI Video Bot and discover Veo Studio and AI Assistant.',
+  title: 'AI Video Bot у Telegram — генерація AI-відео | SaveGood',
+  description: 'AI Video Bot у Telegram: надішліть текстовий промпт і створюйте короткі AI-відео прямо в чаті через @VeoStudioAI_bot.',
+  alternates: { canonical: 'https://savegood.store/video-bot' },
 };
 
 export default function VideoBotPage() {
   return (
-    <main style={{ maxWidth: '900px', margin: '0 auto', padding: '40px 20px' }}>
-      <section className="panel">
-        <span className="eyebrow">🎬 AI VIDEO BOT</span>
-
-        <h1 style={{ marginTop: '10px' }}>
-          Створюйте AI-відео прямо в Telegram
-        </h1>
-
-        <p style={{ fontSize: '18px', lineHeight: '1.6' }}>
-          Надішліть текстовий промпт у Telegram-бот — і створюйте короткі
-          AI-відео без складних програм та налаштувань.
-        </p>
-
-        <div style={{ marginTop: '24px' }}>
-          <a
-            className="primary"
-            href="https://t.me/VeoStudioAI_bot"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Відкрити AI Video Bot
-          </a>
-        </div>
-      </section>
-
-      <section style={{ marginTop: '30px' }}>
-        <div className="section-heading">
-          <div>
-            <span className="eyebrow">Як це працює</span>
-            <h2>Три прості кроки</h2>
-          </div>
-        </div>
-
-        <div className="cards">
-          <article className="card">
-            <div className="card-icon">1️⃣</div>
-            <h3>Відкрийте бота</h3>
-            <p>Перейдіть у Telegram та запустіть AI Video Bot.</p>
-          </article>
-
-          <article className="card">
-            <div className="card-icon">2️⃣</div>
-            <h3>Напишіть промпт</h3>
-            <p>Опишіть, яке відео хочете отримати.</p>
-          </article>
-
-          <article className="card">
-            <div className="card-icon">3️⃣</div>
-            <h3>Отримайте відео</h3>
-            <p>Бот запустить генерацію та надішле готовий результат.</p>
-          </article>
-        </div>
-      </section>
-
-      <section style={{ marginTop: '30px' }}>
-        <div className="section-heading">
-          <div>
-            <span className="eyebrow">Ще більше можливостей</span>
-            <h2>Наші AI-сервіси</h2>
-          </div>
-        </div>
-
-        <div className="cards">
-          <article className="card">
-            <div className="card-icon">🎥</div>
-            <h3>Veo Studio</h3>
-            <p>Повноцінний веб-сервіс для створення AI-відео.</p>
-            <a
-              href="https://getveostudio.app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Відкрити Veo Studio
-            </a>
-          </article>
-
-          <article className="card">
-            <div className="card-icon">🤖</div>
-            <h3>AI Assistant</h3>
-            <p>AI-помічник у Telegram для текстових і голосових запитів.</p>
-            <a
-              href="https://t.me/AIasistent_bot"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Відкрити AI Assistant
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <p style={{ marginTop: '32px', fontSize: '14px', opacity: 0.75 }}>
-        SaveGood допомагає знаходити корисні AI-сервіси та онлайн-інструменти.
-      </p>
-    </main>
+    <SeoLanding
+      description="AI Video Bot у Telegram: надішліть текстовий промпт і створюйте короткі AI-відео прямо в чаті через @VeoStudioAI_bot."
+      canonical="https://savegood.store/video-bot"
+      eyebrow="🎬 AI Video Bot у Telegram"
+      title="Створюйте AI-відео прямо в Telegram"
+      intro="Опишіть потрібне відео текстовим промптом у Telegram-боті. AI Video Bot запускає генерацію та повертає готовий результат у чат."
+      bullets={[
+        'Запуск генерації безпосередньо з Telegram',
+        'Текстовий промпт замість складного редактора',
+        'Готове AI-відео повертається в чат бота',
+      ]}
+      secondTitle="Простий спосіб спробувати AI-відео"
+      secondText="AI Video Bot підійде, якщо ви хочете запускати короткі генерації з телефона без окремого складного інтерфейсу. Для ширшого веб-інтерфейсу доступний Veo Studio."
+      primaryHref="https://t.me/VeoStudioAI_bot"
+      primaryLabel="Відкрити AI Video Bot"
+      faq={[
+        { q: 'Як створити відео через AI Video Bot?', a: 'Відкрийте @VeoStudioAI_bot у Telegram, надішліть текстовий опис потрібного відео та запустіть доступну генерацію.' },
+        { q: 'Чи потрібна окрема програма?', a: 'Ні. Для роботи з ботом достатньо Telegram.' },
+        { q: 'Чим бот відрізняється від Veo Studio?', a: 'Бот дає простий Telegram-формат, а Veo Studio — окремий веб-сервіс із ширшим інтерфейсом для AI-відео.' },
+      ]}
+      related={[
+        ['/dzlegko-telegram-bot', 'ДЗЛегко'],
+        ['/ai-assistant-telegram-bot', 'AI Assistant'],
+        ['/ai-services', 'Усі AI-сервіси'],
+      ]}
+    />
   );
 }
