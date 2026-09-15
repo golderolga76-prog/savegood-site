@@ -405,7 +405,7 @@ function Products() {
         <div className="card-icon">🎥</div>
         <h3>Veo Studio</h3>
         <p>Веб-сервіс для створення AI-відео онлайн.</p>
-        <a href="https://getveostudio.app" target="_blank" rel="noopener noreferrer">
+        <a href="https://getveostudio.app/?utm_source=savegood.store&utm_medium=referral&utm_campaign=products" target="_blank" rel="noopener noreferrer">
           Відкрити сайт
         </a>
       </article>
