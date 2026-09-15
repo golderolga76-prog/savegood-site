@@ -4,6 +4,14 @@ export const metadata = {
   title: 'AI Video Bot у Telegram — генерація AI-відео | SaveGood',
   description: 'AI Video Bot у Telegram: надішліть текстовий промпт і створюйте короткі AI-відео прямо в чаті через @VeoStudioAI_bot.',
   alternates: { canonical: 'https://savegood.store/video-bot' },
+  openGraph: {
+    title: 'AI Video Bot у Telegram | SaveGood',
+    description: 'Створюйте короткі AI-відео з текстового промпта прямо в Telegram.',
+    url: 'https://savegood.store/video-bot',
+    siteName: 'SaveGood',
+    type: 'website',
+    images: [{ url: 'https://savegood.store/api/og/videobot', width: 1200, height: 630 }],
+  },
 };
 
 export default function VideoBotPage() {
