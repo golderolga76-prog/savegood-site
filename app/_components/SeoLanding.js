@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import TrackedLink from './TrackedLink';
 
 export default function SeoLanding({
   eyebrow,
@@ -71,7 +72,9 @@ export default function SeoLanding({
         </div>
 
         <div style={{ marginTop: '28px' }}>
-          <Link className="primary" href={primaryHref}>{primaryLabel}</Link>
+          <TrackedLink className="primary" href={primaryHref} label={primaryLabel}>
+            {primaryLabel}
+          </TrackedLink>
         </div>
       </section>
 
