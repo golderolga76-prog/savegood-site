@@ -17,6 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <SeoLanding
+      breadcrumbLabel="ДЗЛегко"
+      software={{
+        name: 'ДЗЛегко',
+        applicationCategory: 'EducationalApplication',
+        operatingSystem: 'Android, iOS, Windows, macOS, Web',
+        sameAs: 'https://t.me/DZDopomogaBot',
+      }}
       description="ДЗЛегко — Telegram-бот для батьків школярів 5–9 класів в Україні. Надішліть фото домашнього завдання та отримайте відповідь і пояснення."
       canonical="https://savegood.store/dzlegko-telegram-bot"
       eyebrow="📚 Telegram-бот для батьків"
