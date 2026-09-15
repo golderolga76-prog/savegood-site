@@ -45,6 +45,12 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
+      url: 'https://savegood.store/dopomoga-z-domashnim-zavdanniam',
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: 'https://savegood.store/ai-assistant-telegram-bot',
       lastModified,
       changeFrequency: 'weekly',
