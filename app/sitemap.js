@@ -123,6 +123,24 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
+      url: 'https://savegood.store/privacy',
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: 'https://savegood.store/terms',
+      lastModified,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: 'https://savegood.store/contact',
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
       url: 'https://savegood.store/flights',
       lastModified,
       changeFrequency: 'weekly',
