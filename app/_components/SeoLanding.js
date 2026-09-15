@@ -79,7 +79,7 @@ export default function SeoLanding({
       description,
       applicationCategory: software.applicationCategory || 'UtilitiesApplication',
       operatingSystem: software.operatingSystem || 'Telegram',
-      isAccessibleForFree: software.isAccessibleForFree ?? false,
+      isAccessibleForFree: software.isAccessibleForFree,
       offers: software.offers,
       sameAs: software.sameAs ? [software.sameAs] : undefined,
     });
