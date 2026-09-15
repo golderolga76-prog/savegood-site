@@ -51,6 +51,18 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
+      url: 'https://savegood.store/perevirka-domashnoho-zavdannia-po-foto',
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://savegood.store/dopomoga-z-matematykoiu-5-9-klas',
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: 'https://savegood.store/ai-assistant-telegram-bot',
       lastModified,
       changeFrequency: 'weekly',
