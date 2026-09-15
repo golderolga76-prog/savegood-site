@@ -99,10 +99,28 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
+      url: 'https://savegood.store/pryklady-ai-assistant',
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
       url: 'https://savegood.store/video-bot',
       lastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
+    },
+    {
+      url: 'https://savegood.store/pryklady-ai-video-bot',
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://savegood.store/pro-savegood',
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: 'https://savegood.store/flights',
