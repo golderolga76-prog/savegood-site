@@ -2,14 +2,41 @@ import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
 
 export const metadata = {
+  metadataBase: new URL('https://savegood.store'),
   title: 'SaveGood — Travel & Useful Services for Ukrainians in Europe',
   description:
     'Flights, hotels, travel services, official EU information and useful resources for Ukrainians in Europe.',
+  alternates: {
+    canonical: 'https://savegood.store/',
+  },
+  openGraph: {
+    title: 'SaveGood — Useful Services for Ukrainians in Europe',
+    description:
+      'Flights, hotels, official EU information, useful online services and AI tools in one place.',
+    url: 'https://savegood.store/',
+    siteName: 'SaveGood',
+    type: 'website',
+    images: [
+      {
+        url: '/api/og/savegood',
+        width: 1200,
+        height: 630,
+        alt: 'SaveGood — savegood.store',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'SaveGood — Useful Services for Ukrainians in Europe',
+    description:
+      'Flights, hotels, official EU information, useful online services and AI tools in one place.',
+    images: ['/api/og/savegood'],
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="uk">
       <head>
     <meta name="monetag" content="4770140e8e69c804715245b155eaa84f"/>
     <script
