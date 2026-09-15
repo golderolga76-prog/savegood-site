@@ -90,6 +90,8 @@ export default function Home() {
         <a href="/find-cheaper-products">Знайти товар дешевше</a>
         <a href="/ai-services">AI-сервіси</a>
         <a href="/dzlegko-telegram-bot">ДЗЛегко</a>
+        <a href="/perevirka-domashnoho-zavdannia-po-foto">Перевірка ДЗ по фото</a>
+        <a href="/dopomoga-z-matematykoiu-5-9-klas">Математика 5–9 клас</a>
         <a href="/ai-assistant-telegram-bot">AI Assistant</a>
         <a href="/video-bot">AI Video Bot</a>
       </nav>
