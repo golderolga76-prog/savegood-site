@@ -38,6 +38,8 @@ export default function Page() {
       ]}
       related={[
         ['/dzlegko-telegram-bot', 'Сторінка бота ДЗЛегко'],
+        ['/perevirka-domashnoho-zavdannia-po-foto', 'Перевірка завдання по фото'],
+        ['/dopomoga-z-matematykoiu-5-9-klas', 'Математика 5–9 клас'],
         ['/ai-assistant-telegram-bot', 'AI Assistant'],
         ['/ai-services', 'Усі AI-сервіси'],
       ]}
