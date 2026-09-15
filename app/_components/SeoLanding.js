@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import TrackedLink from './TrackedLink';
+import ShareButtons from './ShareButtons';
 
 export default function SeoLanding({
   eyebrow,
@@ -21,11 +22,18 @@ export default function SeoLanding({
 
   const graph = [
     {
+      '@type': 'Brand',
+      '@id': 'https://savegood.store/#brand',
+      name: 'SaveGood',
+      url: 'https://savegood.store/',
+    },
+    {
       '@type': 'WebSite',
       '@id': 'https://savegood.store/#website',
       url: 'https://savegood.store/',
       name: 'SaveGood',
       inLanguage: 'uk',
+      about: { '@id': 'https://savegood.store/#brand' },
     },
     {
       '@type': 'WebPage',
@@ -82,6 +90,7 @@ export default function SeoLanding({
       isAccessibleForFree: software.isAccessibleForFree,
       offers: software.offers,
       sameAs: software.sameAs ? [software.sameAs] : undefined,
+      brand: { '@id': 'https://savegood.store/#brand' },
     });
   }
 
@@ -154,6 +163,8 @@ export default function SeoLanding({
           ))}
         </div>
       </section>
+
+      <ShareButtons title={title} />
 
       <nav aria-label="Related SaveGood pages" style={{ marginTop: '34px', display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
         <Link href="/">Головна</Link>
