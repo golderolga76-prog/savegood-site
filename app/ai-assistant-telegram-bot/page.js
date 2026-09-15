@@ -44,6 +44,7 @@ export default function Page() {
         { q: 'Де знайти AI Assistant?', a: 'Telegram-бот доступний за username @AIasistent_bot.' },
       ]}
       related={[
+        ['/pryklady-ai-assistant', 'Приклади запитів'],
         ['/dzlegko-telegram-bot', 'ДЗЛегко'],
         ['/video-bot', 'AI Video Bot'],
         ['/ai-services', 'Усі AI-сервіси'],
