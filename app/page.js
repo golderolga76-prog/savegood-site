@@ -88,6 +88,7 @@ export default function Home() {
         <a href="/cheap-flights-europe">Авіаквитки по Європі</a>
         <a href="/hotels-in-europe">Готелі в Європі</a>
         <a href="/find-cheaper-products">Знайти товар дешевше</a>
+        <a href="/nashi-servisy">Наші сервіси</a>
         <a href="/ai-services">AI-сервіси</a>
         <a href="/dzlegko-telegram-bot">ДЗЛегко</a>
         <a href="/perevirka-domashnoho-zavdannia-po-foto">Перевірка ДЗ по фото</a>
@@ -411,6 +412,9 @@ function Products() {
           Відкрити сайт
         </a>
       </article>
+    </div>
+    <div style={{ marginTop: '18px', textAlign: 'center' }}>
+      <a className="primary" href="/nashi-servisy">Переглянути всі наші сервіси</a>
     </div>
   </div>;
 }
