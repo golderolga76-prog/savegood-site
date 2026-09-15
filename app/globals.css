@@ -159,3 +159,58 @@
     text-align: left;
   }
 }
+
+
+/* Global footer and trust/legal pages */
+.site-footer{margin-top:48px;border-top:1px solid #dcebea;background:#eef8f7;color:#4f6f70}
+.site-footer__inner{width:min(1120px,calc(100% - 28px));margin:0 auto;padding:30px 0}
+.site-footer__brand{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px}
+.site-footer__brand strong{font-size:20px;color:#173e3f}
+.site-footer__brand span{font-size:14px}
+.site-footer__links{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:18px}
+.site-footer__links a{color:#176c69;font-weight:700;text-decoration:none}
+.site-footer__links a:hover{text-decoration:underline}
+.site-footer__note{max-width:880px;margin:20px 0 0;font-size:12px;line-height:1.6;color:#6c8585}
+.site-footer__copy{margin:14px 0 0;font-size:12px;color:#819999}
+
+.legal-page{width:min(900px,calc(100% - 28px));margin:0 auto;padding:48px 0 30px}
+.legal-page h1{margin:10px 0 8px;font-size:clamp(36px,6vw,54px);line-height:1.08;color:#173e3f;letter-spacing:-1.2px}
+.legal-page h2{margin:0 0 10px;font-size:22px;color:#214d4e}
+.legal-page section{margin-top:24px;padding:24px;background:#fff;border:1px solid #e1eeee;border-radius:20px;box-shadow:0 10px 30px rgba(25,72,71,.04)}
+.legal-page section p{margin:0;color:#5f7879;line-height:1.7}
+.legal-page a{color:#0b8f88}
+.legal-breadcrumb{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;font-size:14px}
+.legal-breadcrumb a{text-decoration:none}
+.legal-updated{margin:0 0 24px;color:#819696;font-size:14px}
+.legal-lead{max-width:760px;color:#607979;font-size:18px;line-height:1.65}
+.legal-links{display:flex;flex-wrap:wrap;gap:12px 18px;margin-top:28px}
+.legal-links a{font-weight:700;text-decoration:none}
+
+.contact-card{display:flex;gap:16px;align-items:flex-start}
+.contact-card__icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:#e8f8f6;font-size:26px;flex:0 0 auto}
+.contact-card h2{margin-top:0}
+.contact-card a{font-size:18px;font-weight:800}
+.contact-card p{margin-top:8px!important}
+.contact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.contact-link{display:flex;flex-direction:column;gap:6px;padding:16px;border:1px solid #dcebea;border-radius:16px;background:#fbfefe;text-decoration:none!important}
+.contact-link strong{color:#214d4e}
+.contact-link span{color:#678081;font-size:14px}
+
+.not-found-page{min-height:65vh;display:grid;place-items:center;width:min(900px,calc(100% - 28px));margin:0 auto;padding:50px 0}
+.not-found-card{width:min(620px,100%);padding:38px;border:1px solid #e1eeee;border-radius:28px;background:#fff;text-align:center;box-shadow:0 18px 50px rgba(25,72,71,.07)}
+.not-found-code{font-size:72px;line-height:1;font-weight:900;color:#13b8ae}
+.not-found-card h1{margin:16px 0 10px;color:#173e3f;font-size:34px}
+.not-found-card p{color:#688081;line-height:1.65}
+.not-found-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}
+.not-found-actions .primary{text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.secondary-link{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:13px 18px;border:1px solid #cfe5e3;border-radius:14px;color:#176c69;text-decoration:none;font-weight:800;background:#f7fbfb}
+
+@media(max-width:720px){
+  .site-footer__inner{width:min(100% - 22px,1120px)}
+  .legal-page{width:min(100% - 20px,900px);padding-top:30px}
+  .legal-page section{padding:20px}
+  .contact-grid{grid-template-columns:1fr}
+  .not-found-card{padding:28px 20px}
+  .not-found-actions{flex-direction:column}
+  .not-found-actions .primary,.secondary-link{width:100%}
+}
