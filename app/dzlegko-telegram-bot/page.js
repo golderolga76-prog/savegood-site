@@ -46,6 +46,7 @@ export default function Page() {
       related={[
         ['/perevirka-domashnoho-zavdannia-po-foto', 'Перевірка завдання по фото'],
         ['/dopomoga-z-matematykoiu-5-9-klas', 'Математика 5–9 клас'],
+        ['/pryklady-zavdan-po-foto', 'Приклади завдань по фото'],
         ['/dopomoga-z-domashnim-zavdanniam', 'Допомога з домашнім завданням 5–9 клас'],
         ['/ai-assistant-telegram-bot', 'AI Assistant'],
         ['/video-bot', 'AI Video Bot'],
