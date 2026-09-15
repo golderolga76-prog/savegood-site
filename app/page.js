@@ -98,7 +98,6 @@ export default function Home() {
         <a href="/video-bot">AI Video Bot</a>
       </nav>
 
-      <footer className="footer">© 2026 SaveGood.store</footer>
     </main>
   );
 }
