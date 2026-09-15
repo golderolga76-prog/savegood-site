@@ -14,40 +14,80 @@ export default function SeoLanding({
   primaryLabel,
   related = [],
   faq = [],
+  breadcrumbLabel,
+  software = null,
 }) {
+  const currentLabel = breadcrumbLabel || title;
+
+  const graph = [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://savegood.store/#website',
+      url: 'https://savegood.store/',
+      name: 'SaveGood',
+      inLanguage: 'uk',
+    },
+    {
+      '@type': 'WebPage',
+      '@id': canonical + '#webpage',
+      url: canonical,
+      name: title,
+      description,
+      inLanguage: 'uk',
+      isPartOf: { '@id': 'https://savegood.store/#website' },
+      breadcrumb: { '@id': canonical + '#breadcrumb' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': canonical + '#breadcrumb',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'SaveGood',
+          item: 'https://savegood.store/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: currentLabel,
+          item: canonical,
+        },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': canonical + '#faq',
+      url: canonical,
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.a,
+        },
+      })),
+    },
+  ];
+
+  if (software) {
+    graph.push({
+      '@type': 'SoftwareApplication',
+      '@id': canonical + '#software',
+      name: software.name,
+      url: canonical,
+      description,
+      applicationCategory: software.applicationCategory || 'UtilitiesApplication',
+      operatingSystem: software.operatingSystem || 'Telegram',
+      isAccessibleForFree: software.isAccessibleForFree ?? false,
+      offers: software.offers,
+      sameAs: software.sameAs ? [software.sameAs] : undefined,
+    });
+  }
+
   const schema = {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': 'https://savegood.store/#website',
-        url: 'https://savegood.store/',
-        name: 'SaveGood',
-        inLanguage: 'uk',
-      },
-      {
-        '@type': 'WebPage',
-        '@id': canonical + '#webpage',
-        url: canonical,
-        name: title,
-        description,
-        inLanguage: 'uk',
-        isPartOf: { '@id': 'https://savegood.store/#website' },
-      },
-      {
-        '@type': 'FAQPage',
-        '@id': canonical + '#faq',
-        url: canonical,
-        mainEntity: faq.map((item) => ({
-          '@type': 'Question',
-          name: item.q,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: item.a,
-          },
-        })),
-      },
-    ],
+    '@graph': graph,
   };
 
   return (
@@ -56,6 +96,15 @@ export default function SeoLanding({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+
+      <nav
+        aria-label="Breadcrumb"
+        style={{ marginBottom: '20px', display: 'flex', gap: '8px', flexWrap: 'wrap', fontSize: '14px', opacity: 0.8 }}
+      >
+        <Link href="/">Головна</Link>
+        <span aria-hidden="true">›</span>
+        <span>{currentLabel}</span>
+      </nav>
 
       <section className="panel">
         <span className="eyebrow">{eyebrow}</span>
