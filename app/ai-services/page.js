@@ -30,6 +30,7 @@ export default function Page() {
         { q: 'Чи потрібен Telegram для всіх AI-сервісів?', a: 'Ні. Veo Studio працює як окремий веб-сервіс, тоді як AI Video Bot і AI Assistant доступні через Telegram.' },
       ]}
       related={[
+        ['/nashi-servisy', 'Усі наші сервіси'],
         ['/dzlegko-telegram-bot', 'ДЗЛегко'],
         ['/ai-assistant-telegram-bot', 'AI Assistant'],
         ['/video-bot', 'AI Video Bot'],
