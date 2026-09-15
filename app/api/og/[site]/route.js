@@ -2,16 +2,51 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export async function GET(request, { params }) {
-  const isVeo = params.site === 'veostudio';
+const cards = {
+  savegood: {
+    title: 'SaveGood',
+    subtitle: 'Корисні сервіси для українців у Європі',
+    domain: 'savegood.store',
+    icon: 'S',
+    accent: '#2563eb',
+    accent2: '#facc15',
+  },
+  veostudio: {
+    title: 'Veo Studio',
+    subtitle: 'AI Video Generator Online',
+    domain: 'getveostudio.app',
+    icon: '▶',
+    accent: '#8b5cf6',
+    accent2: '#d946ef',
+  },
+  dzlegko: {
+    title: 'ДЗЛегко',
+    subtitle: 'Допомога з домашнім завданням 5–9 клас',
+    domain: 'savegood.store',
+    icon: '📚',
+    accent: '#2563eb',
+    accent2: '#22c55e',
+  },
+  assistant: {
+    title: 'AI Assistant',
+    subtitle: 'AI-помічник у Telegram',
+    domain: 'savegood.store',
+    icon: '🤖',
+    accent: '#7c3aed',
+    accent2: '#38bdf8',
+  },
+  videobot: {
+    title: 'AI Video Bot',
+    subtitle: 'Створення AI-відео у Telegram',
+    domain: 'savegood.store',
+    icon: '🎬',
+    accent: '#db2777',
+    accent2: '#8b5cf6',
+  },
+};
 
-  const title = isVeo ? 'Veo Studio' : 'SaveGood';
-  const subtitle = isVeo
-    ? 'AI Video Generator Online'
-    : 'Корисні сервіси для українців у Європі';
-  const domain = isVeo ? 'getveostudio.app' : 'savegood.store';
-  const accent = isVeo ? '#8b5cf6' : '#2563eb';
-  const accent2 = isVeo ? '#d946ef' : '#facc15';
+export async function GET(request, { params }) {
+  const card = cards[params.site] || cards.savegood;
 
   return new ImageResponse(
     (
@@ -45,13 +80,13 @@ export async function GET(request, { params }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: accent,
+              background: card.accent,
               fontSize: '38px',
             }}
           >
-            {isVeo ? '▶' : 'S'}
+            {card.icon}
           </div>
-          {domain}
+          {card.domain}
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '22px' }}>
@@ -64,7 +99,7 @@ export async function GET(request, { params }) {
               maxWidth: '1000px',
             }}
           >
-            {title}
+            {card.title}
           </div>
           <div
             style={{
@@ -74,13 +109,13 @@ export async function GET(request, { params }) {
               maxWidth: '980px',
             }}
           >
-            {subtitle}
+            {card.subtitle}
           </div>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '26px' }}>
-          <div style={{ width: '90px', height: '8px', borderRadius: '999px', background: accent }} />
-          <div style={{ width: '45px', height: '8px', borderRadius: '999px', background: accent2 }} />
+          <div style={{ width: '90px', height: '8px', borderRadius: '999px', background: card.accent }} />
+          <div style={{ width: '45px', height: '8px', borderRadius: '999px', background: card.accent2 }} />
         </div>
       </div>
     ),
