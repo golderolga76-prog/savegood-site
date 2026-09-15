@@ -36,7 +36,7 @@ export default function VideoBotPage() {
       ]}
       secondTitle="Простий спосіб спробувати AI-відео"
       secondText="AI Video Bot підійде, якщо ви хочете запускати короткі генерації з телефона без окремого складного інтерфейсу. Для ширшого веб-інтерфейсу доступний Veo Studio."
-      primaryHref="https://t.me/VeoStudioAI_bot"
+      primaryHref="https://t.me/VeoStudioAI_bot?start=savegood_video"
       primaryLabel="Відкрити AI Video Bot"
       faq={[
         { q: 'Як створити відео через AI Video Bot?', a: 'Відкрийте @VeoStudioAI_bot у Telegram, надішліть текстовий опис потрібного відео та запустіть доступну генерацію.' },
