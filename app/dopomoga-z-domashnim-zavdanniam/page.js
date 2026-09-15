@@ -10,7 +10,7 @@ export const metadata = {
     url: 'https://savegood.store/dopomoga-z-domashnim-zavdanniam',
     siteName: 'SaveGood',
     type: 'website',
-    images: [{ url: 'https://savegood.store/api/og/savegood', width: 1200, height: 630 }],
+    images: [{ url: 'https://savegood.store/api/og/dzlegko', width: 1200, height: 630 }],
   },
 };
 
