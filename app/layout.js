@@ -38,6 +38,30 @@ export default function RootLayout({ children }) {
   return (
     <html lang="uk">
       <head>
+        <script
+          id="savegood-global-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Brand',
+                  '@id': 'https://savegood.store/#brand',
+                  name: 'SaveGood',
+                  url: 'https://savegood.store/',
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': 'https://savegood.store/#website',
+                  url: 'https://savegood.store/',
+                  name: 'SaveGood',
+                  about: { '@id': 'https://savegood.store/#brand' },
+                },
+              ],
+            }),
+          }}
+        />
     <meta name="monetag" content="4770140e8e69c804715245b155eaa84f"/>
     <script
   dangerouslySetInnerHTML={{
