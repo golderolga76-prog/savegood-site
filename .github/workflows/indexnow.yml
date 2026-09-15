@@ -1,0 +1,48 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "app/**"
+      - "public/**"
+  workflow_dispatch:
+
+jobs:
+  notify-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Vercel deployment
+        run: sleep 90
+
+      - name: Submit URLs to IndexNow
+        shell: bash
+        run: |
+          cat > payload.json <<'JSON'
+          {
+            "host": "savegood.store",
+            "key": "7f2a9c4e6b1d83f05a7c2e9b4d6f18a3",
+            "keyLocation": "https://savegood.store/7f2a9c4e6b1d83f05a7c2e9b4d6f18a3.txt",
+            "urlList": [
+              "https://savegood.store/",
+              "https://savegood.store/ukrainians-in-europe",
+              "https://savegood.store/cheap-flights-europe",
+              "https://savegood.store/hotels-in-europe",
+              "https://savegood.store/find-cheaper-products",
+              "https://savegood.store/ai-services",
+              "https://savegood.store/video-bot",
+              "https://savegood.store/flights",
+              "https://savegood.store/hotels",
+              "https://savegood.store/find-cheaper"
+            ]
+          }
+          JSON
+
+          status=$(curl -sS -o response.txt -w "%{http_code}"             -X POST "https://api.indexnow.org/indexnow"             -H "Content-Type: application/json; charset=utf-8"             --data-binary @payload.json)
+
+          cat response.txt || true
+          echo "IndexNow HTTP status: $status"
+
+          if [ "$status" != "200" ] && [ "$status" != "202" ]; then
+            exit 1
+          fi
