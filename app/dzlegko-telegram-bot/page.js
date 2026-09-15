@@ -4,6 +4,14 @@ export const metadata = {
   title: 'ДЗЛегко — Telegram-бот для допомоги з домашнім завданням | SaveGood',
   description: 'ДЗЛегко — Telegram-бот для батьків школярів 5–9 класів в Україні. Надішліть фото домашнього завдання та отримайте відповідь і пояснення.',
   alternates: { canonical: 'https://savegood.store/dzlegko-telegram-bot' },
+  openGraph: {
+    title: 'ДЗЛегко — Telegram-бот для домашнього завдання',
+    description: 'Допомога батькам школярів 5–9 класів: фото завдання, відповідь і пояснення у Telegram.',
+    url: 'https://savegood.store/dzlegko-telegram-bot',
+    siteName: 'SaveGood',
+    type: 'website',
+    images: [{ url: 'https://savegood.store/api/og/dzlegko', width: 1200, height: 630 }],
+  },
 };
 
 export default function Page() {
