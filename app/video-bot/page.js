@@ -17,6 +17,13 @@ export const metadata = {
 export default function VideoBotPage() {
   return (
     <SeoLanding
+      breadcrumbLabel="AI Video Bot"
+      software={{
+        name: 'AI Video Bot',
+        applicationCategory: 'MultimediaApplication',
+        operatingSystem: 'Android, iOS, Windows, macOS, Web',
+        sameAs: 'https://t.me/VeoStudioAI_bot',
+      }}
       description="AI Video Bot у Telegram: надішліть текстовий промпт і створюйте короткі AI-відео прямо в чаті через @VeoStudioAI_bot."
       canonical="https://savegood.store/video-bot"
       eyebrow="🎬 AI Video Bot у Telegram"
