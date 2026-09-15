@@ -1,8 +1,15 @@
 import './globals.css';
 import { Analytics } from '@vercel/analytics/next';
+import SiteFooter from './_components/SiteFooter';
 
 export const metadata = {
   metadataBase: new URL('https://savegood.store'),
+  applicationName: 'SaveGood',
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: [{ url: '/api/icon/192', type: 'image/png', sizes: '192x192' }],
+    apple: [{ url: '/api/icon/192', type: 'image/png', sizes: '192x192' }],
+  },
   title: 'SaveGood — Travel & Useful Services for Ukrainians in Europe',
   description:
     'Flights, hotels, travel services, official EU information and useful resources for Ukrainians in Europe.',
@@ -32,6 +39,10 @@ export const metadata = {
       'Flights, hotels, official EU information, useful online services and AI tools in one place.',
     images: ['/api/og/savegood'],
   },
+};
+
+export const viewport = {
+  themeColor: '#13b8ae',
 };
 
 export default function RootLayout({ children }) {
@@ -91,6 +102,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
+        <SiteFooter />
         <Analytics />
       </body>
     </html>
