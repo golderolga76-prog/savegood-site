@@ -39,10 +39,22 @@ export default function sitemap() {
       priority: 0.85,
     },
     {
+      url: 'https://savegood.store/dzlegko-telegram-bot',
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: 'https://savegood.store/ai-assistant-telegram-bot',
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: 'https://savegood.store/video-bot',
       lastModified,
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
     {
       url: 'https://savegood.store/flights',
