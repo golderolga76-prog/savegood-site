@@ -17,6 +17,13 @@ export const metadata = {
 export default function Page() {
   return (
     <SeoLanding
+      breadcrumbLabel="AI Assistant"
+      software={{
+        name: 'AI Assistant',
+        applicationCategory: 'UtilitiesApplication',
+        operatingSystem: 'Android, iOS, Windows, macOS, Web',
+        sameAs: 'https://t.me/AIasistent_bot',
+      }}
       description="AI Assistant — Telegram-бот для текстових і голосових запитів. Відкрийте AI-помічника прямо в Telegram без окремої програми."
       canonical="https://savegood.store/ai-assistant-telegram-bot"
       eyebrow="🤖 AI Assistant у Telegram"
