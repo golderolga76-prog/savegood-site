@@ -25,7 +25,17 @@ function getText(data) {
     ?.text || '';
 }
 
-async function identifyProduct(url) {
+function parseJson(text) {
+  return JSON.parse(
+    String(text || '')
+      .trim()
+      .replace(/^```(?:json)?\s*/i, '')
+      .replace(/```$/i, '')
+      .trim()
+  );
+}
+
+async function callOpenAI(content) {
   const response = await fetch('https://api.openai.com/v1/responses', {
     method: 'POST',
     headers: {
@@ -34,20 +44,30 @@ async function identifyProduct(url) {
     },
     body: JSON.stringify({
       model: 'gpt-5.6-luna',
-      input: [{
-        role: 'user',
-        content: [{
-          type: 'input_text',
-          text: `Визнач товар за цим посиланням Temu максимально точно: ${url}\n\nПоверни тільки JSON без markdown:\n{"name":"назва українською","features":"короткі характеристики українською","searchQuery":"короткий точний запит англійською без слова Temu"}`,
-        }],
-      }],
+      input: [{ role: 'user', content }],
     }),
   });
 
   const data = await response.json();
   if (!response.ok) throw new Error('OpenAI error');
-  const text = getText(data).trim().replace(/^```(?:json)?\s*/i, '').replace(/```$/i, '').trim();
-  return JSON.parse(text);
+  return getText(data);
+}
+
+async function identifyProduct(url) {
+  return parseJson(await callOpenAI([{
+    type: 'input_text',
+    text: `Визнач товар за цим посиланням Temu максимально точно: ${url}\n\nПоверни тільки JSON без markdown:\n{"name":"назва українською","features":"короткі характеристики українською","searchQuery":"короткий точний запит англійською без слова Temu"}`,
+  }]));
+}
+
+async function analyzeCoupons(image, cartTotal) {
+  return parseJson(await callOpenAI([
+    {
+      type: 'input_text',
+      text: `На зображенні список купонів, акцій або кредитів Temu. Сума кошика: ${cartTotal ? `${cartTotal} EUR` : 'не вказана'}. Прочитай тільки те, що реально видно. Не вигадуй умови. Поверни тільки JSON: {"summary":"що видно","bestOption":"що найвигідніше зараз","coupons":[{"title":"знижка","condition":"умова","expires":"термін якщо видно","usableNow":"так/ні/невідомо","note":"пояснення"}],"warnings":["обмеження якщо видно"]}`,
+    },
+    { type: 'input_image', image_url: image },
+  ]));
 }
 
 async function searchMarket(query, gl, market, apiKey) {
@@ -90,8 +110,16 @@ async function searchMarket(query, gl, market, apiKey) {
 export async function POST(request) {
   try {
     const body = await request.json();
-    const url = body?.url?.trim() || '';
 
+    if (body?.mode === 'coupons') {
+      if (!body?.image) {
+        return Response.json({ ok: false, error: 'Додайте скриншот купонів Temu.' }, { status: 400 });
+      }
+      const couponAnalysis = await analyzeCoupons(body.image, body.cartTotal);
+      return Response.json({ ok: true, couponAnalysis });
+    }
+
+    const url = body?.url?.trim() || '';
     if (!url || !url.includes('temu.')) {
       return Response.json({ ok: false, error: 'Вставте посилання на товар з Temu.' }, { status: 400 });
     }
@@ -139,6 +167,6 @@ export async function POST(request) {
     });
   } catch (error) {
     console.error(error);
-    return Response.json({ ok: false, error: 'Не вдалося виконати пошук на Temu.' }, { status: 500 });
+    return Response.json({ ok: false, error: 'Не вдалося виконати запит Temu.' }, { status: 500 });
   }
 }
