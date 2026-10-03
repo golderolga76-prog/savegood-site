@@ -2,17 +2,6 @@
 
 import { useState } from 'react';
 
-const countries = [
-  ['gr', 'Греція'],
-  ['de', 'Німеччина'],
-  ['pl', 'Польща'],
-  ['cz', 'Чехія'],
-  ['it', 'Італія'],
-  ['es', 'Іспанія'],
-  ['fr', 'Франція'],
-  ['ua', 'Україна'],
-];
-
 export default function FindCheaperPage() {
   const [url, setUrl] = useState('');
   const [message, setMessage] = useState('');
@@ -21,7 +10,6 @@ export default function FindCheaperPage() {
   const [offers, setOffers] = useState([]);
   const [pricingAvailable, setPricingAvailable] = useState(false);
   const [imageFile, setImageFile] = useState(null);
-  const [country, setCountry] = useState('gr');
 
   async function convertImageToJpeg(file) {
     return new Promise((resolve, reject) => {
@@ -88,12 +76,12 @@ export default function FindCheaperPage() {
         image = await convertImageToJpeg(imageFile);
       }
 
-      setMessage('Визначаємо товар і перевіряємо актуальні ціни...');
+      setMessage('Визначаємо товар і шукаємо ціни в різних магазинах та країнах...');
 
       const response = await fetch('/api/find-cheaper', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: value, image, country }),
+        body: JSON.stringify({ url: value, image }),
       });
 
       const data = await response.json();
@@ -119,7 +107,7 @@ export default function FindCheaperPage() {
       <h1>🔎 Знайти дешевше</h1>
 
       <p style={{ fontSize: '18px', lineHeight: '1.5' }}>
-        Вставте посилання на товар або додайте фото. SaveGood визначить товар і покаже пропозиції з цінами на інших сайтах.
+        Вставте посилання на товар або додайте фото. SaveGood визначить товар і автоматично перевірить пропозиції з цінами в різних магазинах та країнах.
       </p>
 
       <input
@@ -129,19 +117,6 @@ export default function FindCheaperPage() {
         placeholder="Вставте посилання на товар"
         style={{ width: '100%', boxSizing: 'border-box', padding: '14px', fontSize: '16px', marginTop: '20px', borderRadius: '10px', border: '1px solid #ccc' }}
       />
-
-      <div style={{ marginTop: '16px' }}>
-        <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600' }}>Країна пошуку</label>
-        <select
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          style={{ width: '100%', padding: '12px', borderRadius: '10px', border: '1px solid #ccc', fontSize: '16px' }}
-        >
-          {countries.map(([code, label]) => (
-            <option key={code} value={code}>{label}</option>
-          ))}
-        </select>
-      </div>
 
       <div style={{ marginTop: '18px' }}>
         <label style={{ display: 'block', marginBottom: '8px', fontWeight: '600' }}>📷 Додати фото товару</label>
@@ -248,7 +223,7 @@ export default function FindCheaperPage() {
         <h2 style={{ fontSize: '20px' }}>Як це працює?</h2>
         <p>1. Вставляєте посилання на товар або додаєте фото.</p>
         <p>2. SaveGood визначає товар і його основні характеристики.</p>
-        <p>3. Пошук перевіряє актуальні торгові пропозиції для вибраної країни.</p>
+        <p>3. Пошук автоматично перевіряє пропозиції в кількох країнах і магазинах.</p>
         <p>4. Ви одразу бачите магазин, назву товару та ціну.</p>
         <p>5. Натискаєте на пропозицію і перевіряєте фінальну ціну на сайті продавця.</p>
       </div>
