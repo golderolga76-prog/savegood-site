@@ -24,6 +24,15 @@ function parsePriceValue(price) {
   return Number.isFinite(number) ? number : null;
 }
 
+function detectCurrency(price) {
+  const text = String(price || '').toLowerCase();
+  if (text.includes('€') || text.includes('eur')) return 'EUR';
+  if (text.includes('£') || text.includes('gbp')) return 'GBP';
+  if (text.includes('zł') || text.includes('pln')) return 'PLN';
+  if (text.includes('$') || text.includes('usd')) return 'USD';
+  return null;
+}
+
 function sourceTokenFromUrl(url) {
   if (!url) return '';
 
@@ -39,13 +48,29 @@ function sourceTokenFromUrl(url) {
   return '';
 }
 
-async function findShoppingOffers(query, country, sourceUrl) {
-  const apiKey = process.env.SERPER_API_KEY;
+async function getEuroRates() {
+  try {
+    const response = await fetch('https://api.frankfurter.app/latest?from=EUR', {
+      cache: 'no-store',
+    });
 
-  if (!apiKey || !query) {
-    return { offers: [], pricingAvailable: false };
+    if (!response.ok) return null;
+    const data = await response.json();
+    return data?.rates || null;
+  } catch {
+    return null;
   }
+}
 
+function convertToEuro(value, currency, rates) {
+  if (value == null || !currency) return null;
+  if (currency === 'EUR') return value;
+  const rate = rates?.[currency];
+  if (!rate) return null;
+  return value / rate;
+}
+
+async function searchMarket(query, market, apiKey) {
   try {
     const response = await fetch('https://google.serper.dev/shopping', {
       method: 'POST',
@@ -55,52 +80,85 @@ async function findShoppingOffers(query, country, sourceUrl) {
       },
       body: JSON.stringify({
         q: query,
-        gl: country || 'gr',
+        gl: market,
         hl: 'en',
-        num: 20,
+        num: 12,
       }),
       cache: 'no-store',
     });
 
     if (!response.ok) {
-      console.error('Serper shopping error:', response.status, await response.text());
-      return { offers: [], pricingAvailable: true };
+      console.error('Serper shopping error:', market, response.status, await response.text());
+      return [];
     }
 
     const data = await response.json();
-    const sourceToken = sourceTokenFromUrl(sourceUrl);
+    return (data.shopping || []).map((item) => ({ ...item, market }));
+  } catch (error) {
+    console.error('Serper shopping exception:', market, error);
+    return [];
+  }
+}
 
-    const offers = (data.shopping || [])
-      .filter((item) => item?.title && item?.price && item?.link)
-      .filter((item) => {
-        if (!sourceToken) return true;
-        return !(item.source || '').toLowerCase().includes(sourceToken);
-      })
-      .map((item, index) => ({
-        id: `${index}-${item.productId || item.title}`,
+async function findShoppingOffers(query, sourceUrl) {
+  const apiKey = process.env.SERPER_API_KEY;
+
+  if (!apiKey || !query) {
+    return { offers: [], pricingAvailable: false };
+  }
+
+  const markets = ['gr', 'de', 'fr', 'it', 'es', 'us'];
+  const [marketResults, rates] = await Promise.all([
+    Promise.all(markets.map((market) => searchMarket(query, market, apiKey))),
+    getEuroRates(),
+  ]);
+
+  const sourceToken = sourceTokenFromUrl(sourceUrl);
+  const seen = new Set();
+
+  const offers = marketResults
+    .flat()
+    .filter((item) => item?.title && item?.price && item?.link)
+    .filter((item) => {
+      if (!sourceToken) return true;
+      return !(item.source || '').toLowerCase().includes(sourceToken);
+    })
+    .map((item, index) => {
+      const priceValue = parsePriceValue(item.price);
+      const currency = detectCurrency(item.price);
+      const priceValueEur = convertToEuro(priceValue, currency, rates);
+
+      return {
+        id: `${item.market}-${index}-${item.productId || item.title}`,
         title: item.title,
         store: item.source || 'Магазин',
         price: item.price,
-        priceValue: parsePriceValue(item.price),
+        priceValue,
+        priceValueEur,
+        currency,
         link: item.link,
         image: item.imageUrl || item.thumbnail || '',
         delivery: item.delivery || '',
         rating: item.rating || null,
         reviews: item.ratingCount || item.reviews || null,
-      }))
-      .sort((a, b) => {
-        if (a.priceValue == null && b.priceValue == null) return 0;
-        if (a.priceValue == null) return 1;
-        if (b.priceValue == null) return -1;
-        return a.priceValue - b.priceValue;
-      })
-      .slice(0, 10);
+        market: item.market,
+      };
+    })
+    .filter((item) => {
+      const key = `${item.store}|${item.title}|${item.price}`.toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .sort((a, b) => {
+      if (a.priceValueEur == null && b.priceValueEur == null) return 0;
+      if (a.priceValueEur == null) return 1;
+      if (b.priceValueEur == null) return -1;
+      return a.priceValueEur - b.priceValueEur;
+    })
+    .slice(0, 12);
 
-    return { offers, pricingAvailable: true };
-  } catch (error) {
-    console.error('Serper shopping exception:', error);
-    return { offers: [], pricingAvailable: true };
-  }
+  return { offers, pricingAvailable: true };
 }
 
 export async function POST(request) {
@@ -109,7 +167,6 @@ export async function POST(request) {
 
     const url = body?.url?.trim() || '';
     const image = body?.image || '';
-    const country = body?.country || 'gr';
 
     if (!url && !image) {
       return Response.json(
@@ -195,7 +252,7 @@ ${url || 'не вказано'}
     }
 
     const searchQuery = product.searchQuery || product.name || '';
-    const shopping = await findShoppingOffers(searchQuery, country, url);
+    const shopping = await findShoppingOffers(searchQuery, url);
     const q = encodeURIComponent(searchQuery);
 
     const stores = [
